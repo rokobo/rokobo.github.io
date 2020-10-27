@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "Portifolio",
-    "currentPage": "portfolio.html",
+    "currentPage": "index.html",
     "theme": {
       "name": "mobirise4",
       "title": "Mobirise 4",
@@ -1373,7 +1373,7 @@
         }
       ]
     },
-    "portfolio.html": {
+    "index.html": {
       "settings": {
         "main": true,
         "title": "Pedro Kobori",
