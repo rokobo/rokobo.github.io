@@ -52,7 +52,9 @@
     "siteUrl": false,
     "cookiesAlert": false,
     "gdpr": false,
-    "publishChangesOnly": true
+    "publishChangesOnly": true,
+    "google-analytics": "<meta property='og:title' content='Pedro Kobori's Portfolio/>\n\n<meta property='og:image' content='https://rokobo.github.io/assets/images/logo-1.svg'/>\n\n<meta property='og:description' content='Logo of website'/>\n\n<meta property='og:url' content='https://rokobo.github.io/'/>",
+    "robotsText": "User-agent: *\r\nDisallow: /cgi-bin\r\n"
   },
   "pages": {
     "projects.html": {
