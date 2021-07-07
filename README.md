@@ -1,1 +1,2 @@
-# Just my portfolio :)
+# Redirect to my Notion Portfolio
+
