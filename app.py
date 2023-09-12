@@ -27,10 +27,9 @@ else:
 
 # -----------App definition-----------------------
 app = dash.Dash(
-    __name__,
-    external_stylesheets=[],
+    __name__
 )
-app.title = 'Covid-19: confirmed cases and extrapolation'
+app.title = 'Testing title'
 server = app.server
 
 app.layout = html.Div([
