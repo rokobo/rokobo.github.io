@@ -1,3 +1,12 @@
+pycovid
 numpy
 pandas
-dash==2.9.3
+dash==1.9.1
+gunicorn
+joblib
+matplotlib
+statsmodels
+nbconvert
+ipykernel
+jupyter_client
+sphinx-gallery
