@@ -17,16 +17,16 @@ jobs:
           command: |
             make clean
             make html
-            python ./build_tools/circleci/post_processing.py ./127.0.0.1\:8050
+            python ./build_tools/circleci/post_processing.py ./127.0.0.1\:8080
       - store_artifacts:
-          path: ./127.0.0.1:8050
+          path: ./127.0.0.1:8080
           destination: .
       - persist_to_workspace:
-          root: ./127.0.0.1:8050
+          root: ./127.0.0.1:8080
           paths: .
       - attach_workspace:
-          at: ./127.0.0.1:8050
-      - run: ls -ltrh ./127.0.0.1:8050
+          at: ./127.0.0.1:8080
+      - run: ls -ltrh ./127.0.0.1:8080
 
 workflows:
   version: 2

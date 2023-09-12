@@ -43,4 +43,4 @@ jobs:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
           external_repository:  rokobo/rokobo.github.io
           publish_branch: main
-          publish_dir: ./127.0.0.1:8050
+          publish_dir: ./127.0.0.1:8080
