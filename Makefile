@@ -62,7 +62,7 @@ clean:
 	rm -rf 127.0.0.1:8050/
 
 gh-pages:
-	cd 127.0.0.1:8050 && touch .nojekyll && git init && git add * && git add .nojekyll && git commit -m "update" && git remote add origin https://github.com/rokobo/rokobo.github.io.git && git push -f origin master
+	cd 127.0.0.1:8050 && touch .nojekyll && git init && git add * && git add .nojekyll && git commit -m "update" && git remote add origin https://github.com/rokobo/rokobo.github.io.git && git push -f origin main
 
 all: gh-pages
 
