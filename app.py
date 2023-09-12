@@ -17,13 +17,6 @@ import dash_html_components as html
 import dash_core_components as dcc
 
 
-if 'DEBUG' in os.environ:
-    debug = os.environ['DEBUG'] == 'True'
-    print(f"DEBUG environment variable present, DEBUG set to {debug}")
-else:
-    print("No DEBUG environment variable: defaulting to debug mode")
-    debug = True
-
 
 # -----------App definition-----------------------
 app = dash.Dash(
@@ -75,4 +68,4 @@ app.layout = html.Div([
 
 
 if __name__ == '__main__':
-    app.run_server(debug=debug)
+    app.run_server(debug=False, port="8080")
