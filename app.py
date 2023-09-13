@@ -9,17 +9,11 @@ Dash documentation: https://dash.plot.ly/
 """
 import os
 import numpy as np
-
-import dash
-from dash.dependencies import Input, Output, State, ClientsideFunction
-import dash_table
-import dash_html_components as html
-import dash_core_components as dcc
-
+from dash import Input, Output, State, ClientsideFunction, html, dcc, Dash
 
 
 # -----------App definition-----------------------
-app = dash.Dash(
+app = Dash(
     __name__
 )
 app.title = 'Testing title'
@@ -27,7 +21,8 @@ server = app.server
 
 app.layout = html.Div([
     html.H1(children=app.title, className="title"),
-    html.H3("testing")
+    html.H3("testing"),
+    html.Button("hello button")
 ])
 
 # ---------------------- Callbacks ---------------------------------
@@ -64,7 +59,6 @@ app.layout = html.Div([
 #         Input('log-lin', 'value')],
 #     state=[State('store', 'data')],
 #     )
-
 
 
 if __name__ == '__main__':
