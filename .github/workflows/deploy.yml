@@ -4,14 +4,11 @@ on:
     branches:
       - main
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  job-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Setup python
         uses: actions/setup-python@v2
@@ -25,13 +22,18 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           sudo apt-get install wget
+          echo "Dependencies installed"
 
       - name: Build static page
         shell: bash
         run: |
             make clean
             make html
-
+            echo "Static page built"
+  job-upload:
+    needs: job-build
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload static files as artifact
         uses: actions/upload-artifact@v2
         with:
@@ -42,14 +44,3 @@ jobs:
             ./index.html
             ./_dash-layout.json
             ./_dash-dependencies.json
-
-      - name: List generated files
-        run: |
-          ls -al ./127.0.0.1:8080/
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-
-
- 
