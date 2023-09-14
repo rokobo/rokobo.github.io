@@ -1,6 +1,6 @@
 html:
 	python3 app.py &
-	sleep 30
+	sleep 60
 	wget --recursive --no-clobber --page-requisites --html-extension --convert-links --no-parent http://127.0.0.1:8080/
 	wget -r http://127.0.0.1:8080/_dash-layout
 	wget -r http://127.0.0.1:8080/_dash-dependencies

@@ -4,7 +4,7 @@ on:
     branches:
       - main
 jobs:
-  job_build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,18 +22,13 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           sudo apt-get install wget
-          echo "Dependencies installed"
 
       - name: Build static page
         shell: bash
         run: |
             make clean
             make html
-            echo "Static page built"
-  job_upload:
-    needs: job_build
-    runs-on: ubuntu-latest
-    steps:
+
       - name: Upload static files as artifact
         uses: actions/upload-artifact@v2
         with:
