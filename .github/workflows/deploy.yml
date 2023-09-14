@@ -28,15 +28,10 @@ jobs:
         run: |
             make clean
             make html
-            ls -al 127.0.0.1:8080
+            ls -al 127.0.0.1+8080
 
       - name: Upload static files as artifact
         uses: actions/upload-artifact@v3
         with:
           name: github-pages
-          path: |
-            127.0.0.1:8080/index.html
-            127.0.0.1:8080/assets/
-            127.0.0.1:8080/_dash-component-suites/
-            127.0.0.1:8080/_dash-dependencies.json
-            127.0.0.1:8080/_dash-layout.json
+          path: 127.0.0.1+8080/*
