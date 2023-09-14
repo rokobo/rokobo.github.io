@@ -18,3 +18,5 @@ jobs:
             ./assets
             ./_dash-component-suites
             ./index.html
+            ./_dash-layout.json
+            ./_dash-dependencies.json
