@@ -35,8 +35,8 @@ jobs:
         with:
           name: github-pages
           path: |
+            ./index.html
             ./assets
             ./_dash-component-suites
-            ./index.html
             ./_dash-layout.json
             ./_dash-dependencies.json
