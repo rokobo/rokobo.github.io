@@ -8,7 +8,6 @@ To launch the app, run
 Dash documentation: https://dash.plot.ly/
 """
 import os
-import numpy as np
 from dash import Input, Output, State, ClientsideFunction, html, dcc, Dash
 
 

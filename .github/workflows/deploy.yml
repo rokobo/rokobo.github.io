@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: '0 5 * * *'  # run at during the 5th hour of each day
-    - cron: '0 17 * * *'  # run at during the 17th hour of each day
+  # schedule:
+  #   - cron: '0 5 * * *'  # run at during the 5th hour of each day
+  #   - cron: '0 17 * * *'  # run at during the 17th hour of each day
 jobs:
   build-and-deploy:
     runs-on: ubuntu-18.04
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.64.0'
+          hugo-version: 'latest'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
