@@ -35,5 +35,8 @@ jobs:
         with:
           name: github-pages
           path: |
-            127.0.0.1:8080/*
-            !127.0.0.1:8080/*\?
+            127.0.0.1:8080/index.html
+            127.0.0.1:8080/assets/
+            127.0.0.1:8080/_dash-component-suites/
+            127.0.0.1:8080/_dash-dependencies.json
+            127.0.0.1:8080/_dash-layout.json
