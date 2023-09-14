@@ -1,12 +1,4 @@
-"""
-Dash app entry point
-
-To launch the app, run
-
-> python app.py
-
-Dash documentation: https://dash.plot.ly/
-"""
+"""App"""
 import os
 from dash import Input, Output, State, ClientsideFunction, html, dcc, Dash
 
