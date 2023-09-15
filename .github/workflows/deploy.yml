@@ -28,8 +28,25 @@ jobs:
         run: |
             make clean
             make html
-            ls -al 127.0.0.1+8080
 
+  debug:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug artifact files
+        shell: bash
+        run: |
+            echo "Files:"
+            ls -al 127.0.0.1+8080
+            echo "Hard links check:"
+            find 127.0.0.1+8080 -type f -links +1
+            echo "Symlinks check:"
+            find 127.0.0.1+8080 -type l
+
+  upload:
+    needs: [build, debug]
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload static files as artifact
         uses: actions/upload-artifact@v3
         with:
@@ -41,17 +58,15 @@ jobs:
             127.0.0.1+8080/_dash-layout.json
             127.0.0.1+8080/index.html
             127.0.0.1+8080/thumbnail.png
-  deploy:
-    needs: build
 
+  deploy:
+    needs: [build, upload]
     permissions:
       pages: write
       id-token: write  
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
