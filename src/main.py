@@ -6,7 +6,7 @@ from dash import Input, Output, State, ClientsideFunction, html, dcc, Dash
 app = Dash(
     __name__
 )
-app.title = 'Pedro Kobori portfolio'
+app.title = 'Pedro Kobori Portfolio'
 server = app.server
 
 app.layout = html.Div([

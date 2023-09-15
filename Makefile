@@ -1,6 +1,6 @@
 html:
 	# Run application for a few seconds
-	python3 src/app.py &
+	python3 src/main.py &
 	sleep 60
 
 	# Download static version of the Dash app with the following options

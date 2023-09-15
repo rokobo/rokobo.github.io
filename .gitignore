@@ -1,0 +1,6 @@
+test.py
+test.ipynb
+.vscode
+.pytest_cache/
+__pycache__/
+tempCodeRunnerFile.py
