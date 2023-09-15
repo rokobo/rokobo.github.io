@@ -24,6 +24,7 @@ html:
 
 	# Copy additional assets
 	cp thumbnail.png 127.0.0.1+8080/
+	mkdir -p 127.0.0.1+8080/assets/
 	cp assets/* 127.0.0.1+8080/assets/
 
 	# Kill python process
