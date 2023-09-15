@@ -29,10 +29,6 @@ jobs:
             make clean
             make html
 
-  debug:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Debug artifact files
         shell: bash
         run: |
@@ -43,10 +39,6 @@ jobs:
             echo "Symlinks check:"
             find 127.0.0.1+8080 -type l
 
-  upload:
-    needs: [build, debug]
-    runs-on: ubuntu-latest
-    steps:
       - name: Upload static files as artifact
         uses: actions/upload-artifact@v3
         with:
@@ -60,7 +52,7 @@ jobs:
             127.0.0.1+8080/thumbnail.png
 
   deploy:
-    needs: [build, upload]
+    needs: build
     permissions:
       pages: write
       id-token: write  
