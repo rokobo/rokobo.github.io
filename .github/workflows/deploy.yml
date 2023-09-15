@@ -42,14 +42,7 @@ jobs:
       - name: Upload static files as artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          name: github-pages
-          path: |
-            127.0.0.1+8080/_dash-component-suites
-            127.0.0.1+8080/assets
-            127.0.0.1+8080/_dash-dependencies.json
-            127.0.0.1+8080/_dash-layout.json
-            127.0.0.1+8080/index.html
-            127.0.0.1+8080/thumbnail.png
+          path: 127.0.0.1+8080/
 
   deploy:
     needs: build
