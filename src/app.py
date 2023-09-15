@@ -1,13 +1,12 @@
-"""App"""
+"""Personal portfolio using Dash."""
 import os
 from dash import Input, Output, State, ClientsideFunction, html, dcc, Dash
 
 
-# -----------App definition-----------------------
 app = Dash(
     __name__
 )
-app.title = 'Testing title'
+app.title = 'Pedro Kobori portfolio'
 server = app.server
 
 app.layout = html.Div([
