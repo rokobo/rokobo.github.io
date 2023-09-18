@@ -1,4 +1,92 @@
+/* Universal CSS */
 body {
     background-color: rgb(30, 30, 30);
     color: rgb(203, 203, 203);
 } 
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: rgb(255, 255, 255)
+}
+h4 {
+    color: rgb(135, 135, 135);
+}
+body::-webkit-scrollbar {
+    width: 0em;
+}
+.nav-item {
+    margin-right: 15px;
+    display: flex;
+    text-align: center;
+    text-justify: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    border: 0;
+}
+.nav-link {
+    color: rgb(255, 255, 255);
+    padding: 0 !important;
+}
+@property --rotate {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes gradientSpin {
+    0% {--rotate: 0deg}
+    100% {--rotate: 360deg}
+}
+.modal-content {
+    background-color: transparent;
+    background-image: linear-gradient(
+        var(--rotate),
+        rgba(93, 220, 255, 0.4), 
+        rgba(60, 103, 227, 0.4),
+        rgba(78, 0, 194, 0.4)
+    );
+    background-position: center center;
+    animation: gradientSpin 4s linear infinite;
+    border: transparent;
+}
+.modal-body {
+    padding: 8px;
+}
+
+/* Reusable CSS */
+.modal-image {
+    width: 100%;
+}
+
+/* Specific CSS */
+.home-icons {
+    height: 50px;
+    width: auto;
+    margin-left: 50px;
+}
+.certificate-card {
+    width: 30vh;
+    margin-bottom: 15px;
+    padding: 0;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.certificate-card img {
+    transition: all 0.5s;
+    transform: scale(1);
+}
+.certificate-card:hover img{
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.certificate-card-body {
+    margin: 0px;
+    padding: 5px;
+}
+.about-card {
+    background-color: rgb(40, 40, 40);
+}
+.about-first-row {
+    height: 500px;
+    background-color: rgb(33, 33, 33); 
+    padding: 30px;
+}
