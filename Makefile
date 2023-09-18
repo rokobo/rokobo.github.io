@@ -24,9 +24,9 @@ html:
 
 	# Add additional assets
 	touch .nojekyll
-	cp thumbnail.png 127.0.0.1+8080/
+	cp -R thumbnail.png 127.0.0.1+8080/
 	mkdir -p 127.0.0.1+8080/assets/
-	cp assets/* 127.0.0.1+8080/assets/
+	cp -R assets/* 127.0.0.1+8080/assets/
 
 	# Kill python process
 	ps | grep python | awk '{print $$1}' | xargs kill -9	

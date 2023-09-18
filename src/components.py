@@ -1,5 +1,5 @@
 """Functions for building components."""
-import sys
+# pylint: disable=import-error
 from os import listdir
 from os.path import join, abspath, dirname
 import yaml
