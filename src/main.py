@@ -9,4 +9,10 @@ if __name__ == '__main__':
         title="Pedro Kobori Portfolio", assets_folder='../assets',
         use_pages=True
     )
-    app.run_server(port="8080")
+    app.run_server(
+        host="0.0.0.0",
+        debug=False,
+        port="8080",
+        dev_tools_hot_reload=True,
+        use_reloader=True
+    )

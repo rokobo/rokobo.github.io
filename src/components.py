@@ -1,12 +1,13 @@
 """Functions for building components."""
+import sys
 from os import listdir
-from os.path import join
+from os.path import join, abspath, dirname
 import yaml
 from dash import html, Input, Output, clientside_callback, ClientsideFunction
 import dash_bootstrap_components as dbc
 
 
-DIRECTORY = "../assets/certificates"
+DIRECTORY = join(dirname(dirname(abspath(__file__))), "assets/certificates")
 files = [f for f in listdir(DIRECTORY) if f.endswith((".png", ".jpg"))]
 with open(join(DIRECTORY, "categories.yml"), "r", encoding="utf-8") as config:
     category = yaml.safe_load(config)
