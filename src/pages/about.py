@@ -4,21 +4,17 @@
 import os
 import sys
 import dash_bootstrap_components as dbc
-import dash
 from dash import html
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-import navigation
 
-dash.register_page(__name__, path="/")
 urls = {
     "github": "https://github.com/rokobo",
     "linkedin": "https://www.linkedin.com/in/pedrokobori/"
 }
 
 layout = html.Div([
-    navigation.layout,
     dbc.Row([
         dbc.Col([
             dbc.Card(dbc.CardBody([

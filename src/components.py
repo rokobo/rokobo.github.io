@@ -7,7 +7,8 @@ from dash import html, Input, Output, clientside_callback, ClientsideFunction
 import dash_bootstrap_components as dbc
 
 
-DIRECTORY = join(dirname(dirname(abspath(__file__))), "assets/certificates")
+ASSETS = "assets/certificates"
+DIRECTORY = join(dirname(dirname(abspath(__file__))), ASSETS)
 files = [f for f in listdir(DIRECTORY) if f.endswith((".png", ".jpg"))]
 with open(join(DIRECTORY, "categories.yml"), "r", encoding="utf-8") as config:
     category = yaml.safe_load(config)
@@ -26,18 +27,21 @@ def certificates() -> dbc.Row:
         body.append(html.P(file[4:-4], className="card-text"))
         card = dbc.Card([
             html.Div(dbc.CardImg(
-                src=join(DIRECTORY, file), top=True
+                src=join(ASSETS, file), top=True
             ), id=f"card-image-{file[:3]}"),
             dbc.Modal([
                 dbc.ModalBody([html.Img(
-                    src=join(DIRECTORY, file),
+                    src=join(ASSETS, file),
                     className="modal-image"
                 )], class_name="certificate-modal-body"),
             ], id=f"card-modal-{file[:3]}", centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
         ], class_name="certificate-card")
         components.append(card)
-    component = dbc.Row(components, justify="evenly")
+    component = dbc.Row(
+        components, justify="evenly",
+        style={"margin-top": "15px"}
+    )
     return component
 
 

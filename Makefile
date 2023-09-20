@@ -1,18 +1,20 @@
 html:
 	# Run application for a few seconds
 	python3 src/main.py &
-	sleep 60
+	sleep 30
 
 	# Download static version of the Dash app with the following options
 	# -r: Recursively download files. It will follow and download all links found in the given URL.
+	# -x: Create a hierarchy of directories when retrieving recursively.
+	# -m: Mirror, recursive download for all of its elements, including all sub-pages, images, etc.
 	# --no-clobber: Prevents overwriting existing files.
-	# --page-requisites: Downloads all the files that are necessary to properly display a given HTML page.
-	# --html-extension: If files don't have a .html extension, this option will save them with a .html extension locally.
-	# --convert-links: Will make wget convert the links in the downloaded HTML files to make them suitable for offline viewing.
+	# -p: Downloads all the files that are necessary to properly display a given HTML page.
+	# -E: If files don't have a .html extension, this option will save them with a .html extension locally.
+	# -k: Will make wget convert the links in the downloaded HTML files to make them suitable for offline viewing.
 	# --restrict-file-names=windows: Ensures that filenames will be compatible with Windows filesystem conventions.
 	# --no-parent: Does not retrieve files from parent directories.
 
-	wget -r --no-clobber --page-requisites --html-extension --convert-links --restrict-file-names=windows --no-parent http://127.0.0.1:8080/
+	wget --no-clobber -x -m -p -E -k --restrict-file-names=windows --no-parent http://127.0.0.1:8080/
 	wget -r --restrict-file-names=windows http://127.0.0.1:8080/_dash-layout
 	wget -r --restrict-file-names=windows http://127.0.0.1:8080/_dash-dependencies
 

@@ -18,4 +18,4 @@ layout = dbc.Row([
             dbc.Col(dbc.NavbarBrand("Pedro Kobori")),
         ], class_name="d-flex align-items-center g-2")])
     )
-], style={"margin-bottom": "30px"})
+])
