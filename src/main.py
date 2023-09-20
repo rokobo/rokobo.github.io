@@ -12,11 +12,25 @@ clientside_callback(
     Input('url', 'pathname')
 )
 
+TITLE = "Pedro Kobori's personal portfolio"
+DESCRIPTION = "Projects, certificates, blog, CV and about section."
+IMAGE = "https://rokobo.github.io/thumbnail.png"
+
 
 if __name__ == '__main__':
     app = Dash(
         __name__, assets_folder='../assets',
+        title="Pedro Kobori",
         external_stylesheets=[dbc.themes.BOOTSTRAP],
+        meta_tags=[
+            {"property": "og:title", "content": TITLE},
+            {"property": "og:description", "content": DESCRIPTION},
+            {"property": "og:image", "content": IMAGE},
+            {"name": "twitter:title", "content": TITLE},
+            {"name": "twitter:description", "content": DESCRIPTION},
+            {"name": "twitter:image", "content": IMAGE},
+            {"name": "twitter:card", "content": "summary_large_image"},
+        ]
     )
 
     # Tabs were used because they can be clientside, unlike Dash pages.
