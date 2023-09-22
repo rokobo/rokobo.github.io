@@ -91,7 +91,7 @@ def projects() -> dbc.Row:
         if exists(image_path):
             image_path = join(ASSETS_REPOS, f"{repo_name}.png")
         else:
-            image_path = join(ASSETS_REPOS, "_.png")
+            image_path = join("assets/", "github.png")
 
         body = [
             html.H5(
