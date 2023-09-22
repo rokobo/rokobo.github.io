@@ -18,7 +18,7 @@ layout = html.Div([
     dbc.Row([
         dbc.Col([
             dbc.Card(dbc.CardBody([
-                html.H1("Hello! 👋 My name is Pedro Kobori",
+                html.H1("Hello! 👋, My name is Pedro Kobori",
                         style={"text-align": "start"}),
                 html.Br(),
                 html.H4("Self-taught developer with a passion for databases, \

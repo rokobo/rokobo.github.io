@@ -3,7 +3,7 @@ from os.path import abspath, dirname, join, exists
 from dash import Dash, dcc, html, Output, Input, clientside_callback, \
     ClientsideFunction
 import dash_bootstrap_components as dbc
-from pages import about, certificates, navigation
+from pages import about, certificates, navigation, projects
 
 
 clientside_callback(
@@ -20,7 +20,7 @@ IMAGE = "https://rokobo.github.io/thumbnail.png"
 if __name__ == '__main__':
     app = Dash(
         __name__, assets_folder='../assets',
-        title="Pedro Kobori",
+        title=TITLE,
         external_stylesheets=[dbc.themes.BOOTSTRAP],
         meta_tags=[
             {"property": "og:title", "content": TITLE},
@@ -40,6 +40,7 @@ if __name__ == '__main__':
         dbc.Tabs([
             dbc.Tab(about.layout, tab_id="/"),
             dbc.Tab(certificates.layout, tab_id="/certificates"),
+            dbc.Tab(projects.layout, tab_id="/projects")
         ], id="tabs", active_tab="/")
     ])
     app.server.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0

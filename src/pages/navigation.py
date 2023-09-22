@@ -7,7 +7,7 @@ layout = dbc.Row([
         children=[
             dbc.NavItem(dbc.NavLink("About", href="/")),
             dbc.NavItem(dbc.NavLink("Certificates", href="/certificates")),
-            dbc.NavItem(dbc.NavLink("Projects", href="/")),
+            dbc.NavItem(dbc.NavLink("Projects", href="/projects")),
             dbc.NavItem(dbc.NavLink("Blog", href="/")),
             dbc.NavItem(dbc.NavLink("CV", href="/")),
         ],
