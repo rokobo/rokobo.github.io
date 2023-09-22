@@ -5,9 +5,9 @@ from dash import html
 layout = dbc.Row([
     dbc.NavbarSimple(
         children=[
-            dbc.NavItem(dbc.NavLink("About", href="/")),
-            dbc.NavItem(dbc.NavLink("Certificates", href="/certificates")),
-            dbc.NavItem(dbc.NavLink("Projects", href="/projects")),
+            dbc.NavItem(dbc.NavLink("About", href="/#about")),
+            dbc.NavItem(dbc.NavLink("Certificates", href="/#certificates")),
+            dbc.NavItem(dbc.NavLink("Projects", href="/#projects")),
             dbc.NavItem(dbc.NavLink("Blog", href="/")),
             dbc.NavItem(dbc.NavLink("CV", href="/")),
         ],

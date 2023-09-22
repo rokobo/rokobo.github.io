@@ -9,7 +9,7 @@ from pages import about, certificates, navigation, projects
 clientside_callback(
     ClientsideFunction(namespace='clientside', function_name='display_page'),
     Output('tabs', 'active_tab'),
-    Input('url', 'pathname')
+    Input('url', 'hash')
 )
 
 TITLE = "Pedro Kobori's personal portfolio"
@@ -35,13 +35,13 @@ if __name__ == '__main__':
 
     # Tabs were used because they can be clientside, unlike Dash pages.
     app.layout = html.Div([
-        dcc.Location(id='url', refresh=True),
+        dcc.Location(id='url', refresh=False),
         navigation.layout,
         dbc.Tabs([
-            dbc.Tab(about.layout, tab_id="/"),
-            dbc.Tab(certificates.layout, tab_id="/certificates"),
-            dbc.Tab(projects.layout, tab_id="/projects")
-        ], id="tabs", active_tab="/")
+            dbc.Tab(about.layout, tab_id="about"),
+            dbc.Tab(certificates.layout, tab_id="certificates"),
+            dbc.Tab(projects.layout, tab_id="projects")
+        ], id="tabs", active_tab="about")
     ])
     app.server.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
