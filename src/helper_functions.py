@@ -73,7 +73,7 @@ def order_repos(repos: list[list]) -> list[list]:
 
 
 def get_repo_images():
-    """Saves repo thumbnails in the /repos directory."""
+    """Used by get_repos to save repo thumbnails in the /repos directory."""
     with open(join(REPO_DIR, "repos.json"), "r", encoding="utf-8") as file:
         repos = json.load(file)
 
