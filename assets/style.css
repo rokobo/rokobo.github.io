@@ -55,6 +55,9 @@ body::-webkit-scrollbar {
 .modal-body {
     padding: 8px;
 }
+.tooltip-inner {
+    white-space: pre-line;
+}
 
 /* Reusable CSS */
 .modal-image {
@@ -93,4 +96,52 @@ body::-webkit-scrollbar {
     height: 500px;
     background-color: rgb(33, 33, 33); 
     padding: 30px;
+}
+.project-card-body {
+    margin: 0px;
+    padding: 0px;
+}
+.project-card {
+    width: 30vh;
+    height: 48vh;
+    margin-top: 3vh;
+    padding: 1vh;
+    color: white;
+    background-color: rgb(45, 45, 45);
+}
+.project-row {
+    column-gap: 0px;
+    padding: 0px;
+    margin-right: 1vh;
+    margin-left: 1vh;
+}
+.project-card-image {
+    height: 20vh;
+    object-fit: contain;
+    align-self: center;
+    object-position: top;
+}
+.project-description {
+    height: 12vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 1vh;
+}
+.project-description::-webkit-scrollbar {
+    width: 20px;
+}
+.project-card-title {
+    height: 4vh;
+    white-space: nowrap;      
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.project-languages {
+    height: 8vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-bottom: 1vh;
+}
+.project-languages::-webkit-scrollbar {
+    width: 5px;
 }
