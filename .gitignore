@@ -6,3 +6,6 @@ __pycache__/
 tempCodeRunnerFile.py
 .sync/
 desktop.ini
+.env
+assets/repos/*
+!assets/repos/order.json

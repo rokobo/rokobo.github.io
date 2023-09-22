@@ -25,6 +25,8 @@ jobs:
         run: |
             make clean
             make html
+        env: 
+          GH_TOKEN_SECRET: ${{ secrets.GH_TOKEN_SECRET }}
       - name: Debug artifact files
         shell: bash
         run: |
