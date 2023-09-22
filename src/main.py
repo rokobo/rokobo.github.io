@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # Tabs were used because they can be clientside, unlike Dash pages.
     app.layout = html.Div([
-        dcc.Location(id='url', refresh=False),
+        dcc.Location(id='url', refresh=True),
         navigation.layout,
         dbc.Tabs([
             dbc.Tab(about.layout, tab_id="/"),

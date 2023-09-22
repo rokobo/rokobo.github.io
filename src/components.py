@@ -44,7 +44,7 @@ def certificates() -> dbc.Row:
         components.append(card)
     component = dbc.Row(
         components, justify="evenly",
-        style={"margin-top": "15px"}
+        style={"marginTop": "15px"}
     )
     return component
 

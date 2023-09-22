@@ -19,11 +19,11 @@ layout = html.Div([
         dbc.Col([
             dbc.Card(dbc.CardBody([
                 html.H1("Hello! 👋, My name is Pedro Kobori",
-                        style={"text-align": "start"}),
+                        style={"textAlign": "start"}),
                 html.Br(),
                 html.H4("Self-taught developer with a passion for databases, \
                         productivity software, automations and data analysis.",
-                        style={"text-align": "start"})
+                        style={"textAlign": "start"})
             ]), class_name="about-card")
         ], class_name="d-flex flex-column justify-content-center"),
         dbc.Col([
