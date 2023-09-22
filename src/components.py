@@ -6,7 +6,7 @@ import json
 import yaml
 from dash import html, Input, Output, clientside_callback, ClientsideFunction
 import dash_bootstrap_components as dbc
-from helper_functions import short_display_num
+from helper_functions import short_display_num, get_repos
 
 HOME = dirname(dirname(abspath(__file__)))
 ASSETS_CERTIFICATES = "assets/certificates"
@@ -70,14 +70,18 @@ def projects() -> dbc.Row:
         dbc.Row: Row with all project cards.
     """
     components = []
-    with open(join(REPO_DIR, "repos.json"), "r", encoding="utf-8") as file:
+    repos_directory = join(REPO_DIR, "repos.json")
+    if not exists(repos_directory):
+        get_repos()
+
+    with open(repos_directory, "r", encoding="utf-8") as file:
         repos = json.load(file)
 
     for _, url, description, languages in repos:
         tags = [
             dbc.Badge(
                 f"{lang} {short_display_num(count)}", pill=True,
-                color="rgba(233, 233, 222, 0.15)"  #TODO language colorcode
+                color="rgba(233, 233, 222, 0.15)"
             )
             for lang, count in languages.items()
         ]

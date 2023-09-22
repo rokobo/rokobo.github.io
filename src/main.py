@@ -4,7 +4,6 @@ from dash import Dash, dcc, html, Output, Input, clientside_callback, \
     ClientsideFunction
 import dash_bootstrap_components as dbc
 from pages import about, certificates, navigation, projects
-from helper_functions import get_repos
 
 
 clientside_callback(
@@ -56,5 +55,4 @@ if __name__ == '__main__':
             use_reloader=True
         )
     else:
-        get_repos()
         app.run_server(port="8080")
