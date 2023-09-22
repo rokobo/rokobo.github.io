@@ -45,9 +45,11 @@ def get_repos():
             time.sleep(5)
             continue
 
+    # Order, save and get images
     repos = order_repos(data)
     with open(join(REPO_DIR, "repos.json"), "w", encoding="utf-8") as file:
         json.dump(repos, file, indent=4)
+    get_repo_images(data)
 
 
 def order_repos(repos: list[list]) -> list[list]:
@@ -72,12 +74,15 @@ def order_repos(repos: list[list]) -> list[list]:
     return repos
 
 
-def get_repo_images():
-    """Used by get_repos to save repo thumbnails in the /repos directory."""
-    with open(join(REPO_DIR, "repos.json"), "r", encoding="utf-8") as file:
-        repos = json.load(file)
-
-    for url in repos.keys():
+def get_repo_images(repos: list[list]):
+    """
+    Used by get_repos to save repo thumbnails in the /repos directory.
+    
+    Args:
+        repos (list[list]): List of repos.
+    """
+    for data in repos:
+        url = data[1]
         thumbnail_url = f"{url}/raw/main/thumbnail.png"
         response = requests.get(thumbnail_url, timeout=10)
 
