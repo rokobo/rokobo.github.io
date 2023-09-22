@@ -21,6 +21,13 @@ def test_pylint_components() -> None:
     assert result.global_note == 10, result.by_msg
 
 
+def test_pylint_helper_functions() -> None:
+    """Ensures helper_functions passes pylint specifications."""
+    file = os.path.join(src_folder, "helper_functions.py")
+    result = Run([file], exit=False).linter.stats
+    assert result.global_note == 10, result.by_msg
+
+
 def test_pylint_about() -> None:
     """Ensures about passes pylint specifications."""
     file = os.path.join(pages_folder, "about.py")

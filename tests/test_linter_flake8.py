@@ -21,6 +21,13 @@ def test_flake8_components() -> None:
     assert result.total_errors == 0, result.get_statistics(('F', 'E', 'W'))
 
 
+def test_flake8_helper_functions() -> None:
+    """Ensures helper_functions passes flake8 specifications."""
+    file = os.path.join(src_folder, "helper_functions.py")
+    result = flake8.get_style_guide().check_files([file])
+    assert result.total_errors == 0, result.get_statistics(('F', 'E', 'W'))
+
+
 def test_flake8_about() -> None:
     """Ensures about passes flake8 specifications."""
     file = os.path.join(pages_folder, "about.py")
