@@ -15,10 +15,12 @@ body::-webkit-scrollbar {
 }
 .nav, .nav-tabs {
     background-color: transparent;
-    height: 0px;
+    justify-content: space-evenly;
+    margin-bottom: 1vh;
 }
 .nav-item {
-    margin-right: 15px;
+    margin-right: 7px;
+    margin-left: 7px;
     display: flex;
     text-align: center;
     text-justify: center;
@@ -29,7 +31,6 @@ body::-webkit-scrollbar {
 }
 .nav-link {
     color: rgb(255, 255, 255);
-    padding: 0 !important;
 }
 @property --rotate {
     syntax: "<angle>";
@@ -92,10 +93,20 @@ body::-webkit-scrollbar {
 .about-card {
     background-color: rgb(40, 40, 40);
 }
+.sub-about-card {
+    width: 85vw;
+    margin-top: 5vw;
+    background-color: rgb(33, 33, 33); 
+}
 .about-first-row {
     height: 500px;
     background-color: rgb(33, 33, 33); 
     padding: 30px;
+}
+.about-second-row {
+    justify-content: center;
+    background-color: rgb(40, 40, 40);
+    padding: 5vw;
 }
 .project-card-body {
     margin: 0px;
@@ -144,4 +155,15 @@ body::-webkit-scrollbar {
 }
 .project-languages::-webkit-scrollbar {
     width: 5px;
+}
+.curriculum-button {
+    width: 50vw;
+    margin: 3vw;
+}
+.curriculum-image {
+    width: 80vw;
+    padding: 8px;
+}
+.curriculum-row {
+    justify-content: center;
 }

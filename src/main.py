@@ -3,7 +3,7 @@ from os.path import abspath, dirname, join, exists
 from dash import Dash, dcc, html, Output, Input, clientside_callback, \
     ClientsideFunction
 import dash_bootstrap_components as dbc
-from pages import about, certificates, navigation, projects
+from pages import about, certificates, navigation, projects, cv
 
 
 clientside_callback(
@@ -40,7 +40,8 @@ if __name__ == '__main__':
         dbc.Tabs([
             dbc.Tab(about.layout, tab_id="about"),
             dbc.Tab(certificates.layout, tab_id="certificates"),
-            dbc.Tab(projects.layout, tab_id="projects")
+            dbc.Tab(projects.layout, tab_id="projects"),
+            dbc.Tab(cv.layout, tab_id="cv")
         ], id="tabs", active_tab="about")
     ])
     app.server.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0

@@ -77,7 +77,7 @@ def order_repos(repos: list[list]) -> list[list]:
 def get_repo_images(repos: list[list]):
     """
     Used by get_repos to save repo thumbnails in the /repos directory.
-    
+
     Args:
         repos (list[list]): List of repos.
     """
