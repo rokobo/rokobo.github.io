@@ -38,12 +38,12 @@ layout = html.Div([
     ], class_name="about-first-row"),
     dbc.Row([
         dbc.Card(dbc.CardBody(html.H5("""
-            I am self-taught backend software developer. My education is based 
-            on the curriculum dictated by the Open Source Society University.
-        """)), class_name="sub-about-card"),
+            "I am self-taught backend software developer. My education is based 
+            on the curriculum dictated by the Open Source Society University."
+        """, className="about-text")), class_name="about-text-card"),
         html.Br(),
         dbc.Card(dbc.CardBody(html.H5("""
-            I always loved hoarding and analyzing all kinds of data. Throughout
+            "I always loved hoarding and analyzing all kinds of data. Throughout
             life, this lead me to recording and thinking about every piece
             of information I could get my hands on. I became particularly
             interested in automating data analysis and collection, as well
@@ -53,23 +53,23 @@ layout = html.Div([
             information they are surrounded by. This eventually made me
             become interested in computer software development, psychology, 
             market analysis and the dynamics of data."
-        """)), class_name="sub-about-card"),
+        """, className="about-text")), class_name="about-text-card"),
         html.Br(),
         dbc.Card(dbc.CardBody(html.H5("""
-            To me, learning about data analysis is more than a mathematical 
+            "To me, learning about data analysis is more than a mathematical 
             problem. Learning to gather and interpret data served me well 
             in numerous situations. By applying the knowledge I gained 
             from constantly trying to find patterns in data, I was able to 
             make better decisions in life. Information is everywhere, 
             training to interpret patterns and biases enables one to 
-            become a better person.
-        """)), class_name="sub-about-card"),
+            become a better person."
+        """, className="about-text")), class_name="about-text-card"),
         html.Br(),
         dbc.Card(dbc.CardBody(html.H5("""
-            I believe the study and analysis of data is a fundamental pilar 
+            "I believe the study and analysis of data is a fundamental pilar 
             for the development of a better world. Being able to transform 
             data into meaningful and helpful insights is what I strive for 
-            as a software developer.
-        """)), class_name="sub-about-card")
+            as a software developer."
+        """, className="about-text")), class_name="about-text-card")
     ], class_name="about-second-row")
 ])

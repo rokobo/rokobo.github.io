@@ -9,6 +9,7 @@ desktop.ini
 .env
 assets/repos/*
 !assets/repos/order.json
+!assets/repos/colors.json
 assets/cv/*
 !assets/cv/*.pdf
 !assets/cv/*.tex

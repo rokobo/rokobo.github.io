@@ -22,6 +22,10 @@ with open(join(ASSET_DIR, "tags.yml"), "r", encoding="utf-8") as config:
     TAGS = yaml.safe_load(config)
 CATEGORIES = list({tag[0] for tag in TAGS.values()})
 CATEGORIES.insert(0, "All")
+with open(join(REPO_DIR, "order.json"), "r", encoding="utf-8") as config:
+    ORDER = json.load(config)
+with open(join(REPO_DIR, "colors.json"), "r", encoding="utf-8") as config:
+    COLORS = json.load(config)
 
 
 def certificates() -> dbc.Row:
@@ -80,7 +84,7 @@ def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
         modal_ids.append(modal_id)
         image_ids.append(image_id)
 
-        body = [dbc.Badge(number, pill=True) for number in TAGS[file[:3]][1:]]
+        body = [dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][1:]]
         body.append(html.P(file[4:-4], className="card-text"))
         card = dbc.Card([
             html.Div(dbc.CardImg(
@@ -109,7 +113,8 @@ def projects() -> dbc.Row:
     Returns:
         dbc.Row: Row with all project cards.
     """
-    components = []
+    ordered_components = [None] * len(ORDER)
+    head_components = []
     repos_directory = join(REPO_DIR, "repos.json")
     if not exists(repos_directory):
         get_repos()
@@ -121,7 +126,7 @@ def projects() -> dbc.Row:
         tags = [
             dbc.Badge(
                 f"{lang} {short_display_num(count)}", pill=True,
-                color="rgba(233, 233, 222, 0.15)"
+                color=COLORS.get(lang, "rgba(233, 233, 222, 0.2)")
             )
             for lang, count in languages.items()
         ]
@@ -161,10 +166,15 @@ def projects() -> dbc.Row:
                 target=f"project-card-title-{repo_name}"
             ),
         ], class_name="project-card")
-        components.append(card)
+        if url in ORDER:
+            ordered_components[ORDER.index(url)] = card
+        else:
+            head_components.append(card)
 
+    head_components.extend(ordered_components)
     component = dbc.Row(
-        components, justify="evenly", class_name="project-row")
+        list(filter(None, head_components)),
+        justify="evenly", class_name="project-row")
     return component
 
 

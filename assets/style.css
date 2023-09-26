@@ -93,10 +93,12 @@ body::-webkit-scrollbar {
 .about-card {
     background-color: rgb(40, 40, 40);
 }
-.sub-about-card {
-    width: 85vw;
-    margin-top: 5vw;
-    background-color: rgb(33, 33, 33); 
+.about-text-card {
+    background-color: rgb(33, 33, 33);
+    margin-bottom: 5vw;
+}
+.about-text {
+    text-align:left;
 }
 .about-first-row {
     height: 500px;

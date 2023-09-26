@@ -3,6 +3,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/**'
+      - '**.py'
+      - 'assets/**'
+      - 'thumbnail.png'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 1 * * *'
+    - cron: '0 11 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest

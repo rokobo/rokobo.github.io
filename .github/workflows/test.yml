@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/**'
+      - '**.py'
+      - 'assets/**'
+      - 'tests/**'
+      - 'thumbnail.png'
 jobs:
   testing:
     runs-on: ubuntu-latest
