@@ -10,8 +10,8 @@ on:
       - 'thumbnail.png'
   workflow_dispatch:
   schedule:
-    - cron: '0 1 * * *'
-    - cron: '0 11 * * *'
+    - cron: '0 12 * * *'
+    - cron: '0 23 * * *'
 jobs:
   build:
     runs-on: ubuntu-latest

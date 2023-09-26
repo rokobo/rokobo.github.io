@@ -26,6 +26,82 @@ with open(join(REPO_DIR, "order.json"), "r", encoding="utf-8") as config:
     ORDER = json.load(config)
 with open(join(REPO_DIR, "colors.json"), "r", encoding="utf-8") as config:
     COLORS = json.load(config)
+URLS = {
+    "github": "https://github.com/rokobo",
+    "linkedin": "https://www.linkedin.com/in/pedrokobori/"
+}
+
+
+def about() -> dbc.Row:
+    """
+    Generates about section.
+
+    Returns:
+        dbc.Row: Row with about sections.
+    """
+    component = dbc.Row([
+        dbc.Row([
+            dbc.Col([
+                dbc.Card(dbc.CardBody([
+                    html.H1("Hello! 👋, My name is Pedro Kobori",
+                            style={"textAlign": "start"}),
+                    html.Br(),
+                    html.H4("""
+                        Self-taught developer with a passion for databases,
+                        productivity software, automations and data analysis.
+                    """, style={"textAlign": "start"})
+                ]), class_name="about-card")
+            ], class_name="d-flex flex-column justify-content-center"),
+            dbc.Col([
+                dbc.Row(html.A([html.Img(
+                    src="assets/github.png", className="home-icons"
+                )], href=URLS["github"], target="_blank")),
+                dbc.Row(html.A([html.Img(
+                    src="assets/linkedin.png", className="home-icons"
+                )], href=URLS["linkedin"], target="_blank")),
+            ], width="auto", class_name="d-flex flex-column \
+                justify-content-between align-items-center")
+        ], class_name="about-first-row"),
+        dbc.Row([
+            html.H5("""
+                "I am self-taught backend software developer. My education is
+                based on the curriculum dictated by the Open Source Society
+                University."
+            """, className="about-text"),
+            html.Br(),
+            html.H5("""
+                "I always loved hoarding and analyzing all kinds of data.
+                Throughout life, this lead me to recording and thinking about
+                every piece of information I could get my hands on. I became
+                particularly interested in automating data analysis and
+                collection, as well as in how information is perceived and
+                understood by people. I find it fascinating how people, with
+                their own experiences, produced vastly different theories and
+                conclusions with the information they are surrounded by. This
+                eventually made me become interested in computer software
+                development, psychology, market analysis and the dynamics of
+                data."
+            """, className="about-text"),
+            html.Br(),
+            html.H5("""
+                "To me, learning about data analysis is more than a
+                mathematical problem. Learning to gather and interpret data
+                served me well in numerous situations. By applying the
+                knowledge I gained from constantly trying to find patterns in
+                data, I was able to make better decisions in life. Information
+                is everywhere, training to interpret patterns and biases
+                enables one to become a better person."
+            """, className="about-text"),
+            html.Br(),
+            html.H5("""
+                "I believe the study and analysis of data is a fundamental
+                pillar for the development of a better world. Being able to
+                transform data into meaningful and helpful insights is what I
+                strive for as a software developer."
+            """, className="about-text")
+        ], class_name="about-second-row")
+    ])
+    return component
 
 
 def certificates() -> dbc.Row:
@@ -97,7 +173,7 @@ def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
                 )], class_name="certificate-modal-body"),
             ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
-        ], class_name="certificate-card")
+        ], class_name="certificate-card base-card")
         cards.append(card)
 
     tab = dbc.Tab(dbc.Row(
@@ -165,7 +241,7 @@ def projects() -> dbc.Row:
                 repo_name,
                 target=f"project-card-title-{repo_name}"
             ),
-        ], class_name="project-card")
+        ], class_name="project-card shiny-background base-card")
         if url in ORDER:
             ordered_components[ORDER.index(url)] = card
         else:

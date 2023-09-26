@@ -2,22 +2,27 @@
 body {
     background-color: rgb(30, 30, 30);
     color: rgb(203, 203, 203);
-} 
+}
+
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
     color: rgb(255, 255, 255)
 }
+
 h4 {
     color: rgb(135, 135, 135);
 }
+
 body::-webkit-scrollbar {
     width: 0em;
 }
+
 .nav, .nav-tabs {
     background-color: transparent;
     justify-content: space-evenly;
     margin-bottom: 1vh;
 }
+
 .nav-item {
     margin-right: 7px;
     margin-left: 7px;
@@ -29,23 +34,27 @@ body::-webkit-scrollbar {
     padding: 0;
     border: 0;
 }
+
 .nav-link {
     color: rgb(255, 255, 255);
 }
+
 @property --rotate {
     syntax: "<angle>";
     initial-value: 0deg;
     inherits: false;
 }
+
 @keyframes gradientSpin {
     0% {--rotate: 0deg}
     100% {--rotate: 360deg}
 }
+
 .modal-content {
     background-color: transparent;
     background-image: linear-gradient(
         var(--rotate),
-        rgba(93, 220, 255, 0.4), 
+        rgba(93, 220, 255, 0.4),
         rgba(60, 103, 227, 0.4),
         rgba(78, 0, 194, 0.4)
     );
@@ -53,16 +62,55 @@ body::-webkit-scrollbar {
     animation: gradientSpin 4s linear infinite;
     border: transparent;
 }
+
 .modal-body {
     padding: 8px;
 }
+
 .tooltip-inner {
     white-space: pre-line;
 }
 
+
 /* Reusable CSS */
 .modal-image {
     width: 100%;
+}
+
+.shiny-background:before, .shiny-background:after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(
+        var(--rotate),
+        rgba(251, 0, 148, 0.35),
+        rgba(0, 0, 255, 0.35),
+        rgba(0, 255, 0, 0.35),
+        rgba(255, 255, 0, 0.35),
+        rgba(255, 0, 0, 0.35),
+        rgba(251, 0, 148, 0.35),
+        rgba(0, 0, 255, 0.35),
+        rgba(0, 255, 0, 0.35),
+        rgba(255, 255, 0, 0.35),
+        rgba(255, 0, 0, 0.35)
+    );
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    animation: gradientSpin 10s linear infinite;
+}
+
+.shiny-background:after {
+    filter: blur(5px);
+}
+
+.base-card {
+    width: 30vh;
+    margin-bottom: 2vh;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 
 /* Specific CSS */
@@ -71,101 +119,127 @@ body::-webkit-scrollbar {
     width: auto;
     margin-left: 50px;
 }
+
 .certificate-card {
-    width: 30vh;
-    margin-bottom: 15px;
     padding: 0;
-    margin-right: 5px;
-    margin-left: 5px;
 }
+
 .certificate-card img {
     transition: all 0.5s;
     transform: scale(1);
 }
-.certificate-card:hover img{
+
+.certificate-card:hover img {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .certificate-card-body {
     margin: 0px;
     padding: 5px;
 }
+
 .about-card {
     background-color: rgb(40, 40, 40);
+    width: auto;
+    height: auto;
 }
+
 .about-text-card {
     background-color: rgb(33, 33, 33);
     margin-bottom: 5vw;
 }
+
 .about-text {
-    text-align:left;
+    text-align: left;
+    margin-bottom: 5vh;
 }
+
 .about-first-row {
     height: 500px;
-    background-color: rgb(33, 33, 33); 
+    background-color: rgb(33, 33, 33);
     padding: 30px;
 }
+
 .about-second-row {
     justify-content: center;
     background-color: rgb(40, 40, 40);
-    padding: 5vw;
+    padding: 5vh;
 }
+
 .project-card-body {
     margin: 0px;
     padding: 0px;
 }
+
 .project-card {
-    width: 30vh;
     height: 48vh;
-    margin-top: 3vh;
-    padding: 1vh;
     color: white;
     background-color: rgb(45, 45, 45);
 }
+
 .project-row {
     column-gap: 0px;
     padding: 0px;
-    margin-right: 1vh;
-    margin-left: 1vh;
+    margin-right: 0.5vh;
+    margin-left: 0.5vh;
 }
+
 .project-card-image {
     height: 20vh;
     object-fit: contain;
     align-self: center;
     object-position: top;
 }
+
 .project-description {
     height: 12vh;
     overflow-y: scroll;
     overflow-x: hidden;
     margin-bottom: 1vh;
 }
+
 .project-description::-webkit-scrollbar {
     width: 20px;
 }
+
 .project-card-title {
     height: 4vh;
-    white-space: nowrap;      
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 .project-languages {
     height: 8vh;
     overflow-y: scroll;
     overflow-x: hidden;
     margin-bottom: 1vh;
 }
+
 .project-languages::-webkit-scrollbar {
     width: 5px;
 }
+
 .curriculum-button {
     width: 50vw;
     margin: 3vw;
+}
+.curriculum-button:hover {
+    background-color: red;
 }
 .curriculum-image {
     width: 80vw;
     padding: 8px;
 }
+
 .curriculum-row {
     justify-content: center;
+}
+
+/* Mobile CSS */
+@media only screen and (max-width: 768px) {
+    .base-card {
+        width: 80vw;
+    }
 }
