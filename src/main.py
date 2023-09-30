@@ -30,6 +30,7 @@ if __name__ == '__main__':
             {"name": "twitter:description", "content": DESCRIPTION},
             {"name": "twitter:image", "content": IMAGE},
             {"name": "twitter:card", "content": "summary_large_image"},
+            {"name": "viewport", "content": "initial-scale=1"},
         ]
     )
 
@@ -37,12 +38,16 @@ if __name__ == '__main__':
     app.layout = html.Div([
         dcc.Location(id='url', refresh=False),
         navigation.layout,
+        html.I(), html.I(), html.I(), html.I(), html.I(),
+        html.I(), html.I(), html.I(), html.I(), html.I(),
+        html.I(), html.I(), html.I(), html.I(), html.I(),
+        html.I(), html.I(), html.I(), html.I(), html.I(),
         dbc.Tabs([
             dbc.Tab(about.layout, tab_id="about"),
             dbc.Tab(certificates.layout, tab_id="certificates"),
             dbc.Tab(projects.layout, tab_id="projects"),
             dbc.Tab(cv.layout, tab_id="cv")
-        ], id="tabs", active_tab="about")
+        ], id="tabs", active_tab="about"),
     ])
     app.server.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 

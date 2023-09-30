@@ -50,7 +50,7 @@ def about() -> dbc.Row:
                         Self-taught developer with a passion for databases,
                         productivity software, automations and data analysis.
                     """, style={"textAlign": "start"})
-                ]), class_name="about-card")
+                ]), class_name="glass")
             ], class_name="d-flex flex-column justify-content-center"),
             dbc.Col([
                 dbc.Row(html.A([html.Img(
@@ -63,14 +63,17 @@ def about() -> dbc.Row:
                 justify-content-between align-items-center")
         ], class_name="about-first-row"),
         dbc.Row([
-            html.H5("""
-                "I am self-taught backend software developer. My education is
+            dbc.Card(dbc.CardBody([html.H5(["""
+                I am self-taught backend software developer. My education is
                 based on the curriculum dictated by the Open Source Society
-                University."
-            """, className="about-text"),
+                University """,
+                html.A(
+                    "(OSSU)", href="https://github.com/ossu/computer-science"),
+                "."
+            ], className="about-text")]), className="glass about-card"),
             html.Br(),
-            html.H5("""
-                "I always loved hoarding and analyzing all kinds of data.
+            dbc.Card(dbc.CardBody([html.H5(["""
+                I always loved hoarding and analyzing all kinds of data.
                 Throughout life, this lead me to recording and thinking about
                 every piece of information I could get my hands on. I became
                 particularly interested in automating data analysis and
@@ -80,25 +83,25 @@ def about() -> dbc.Row:
                 conclusions with the information they are surrounded by. This
                 eventually made me become interested in computer software
                 development, psychology, market analysis and the dynamics of
-                data."
-            """, className="about-text"),
+                data.
+            """], className="about-text")]), className="glass about-card"),
             html.Br(),
-            html.H5("""
-                "To me, learning about data analysis is more than a
+            dbc.Card(dbc.CardBody([html.H5(["""
+                To me, learning about data analysis is more than a
                 mathematical problem. Learning to gather and interpret data
                 served me well in numerous situations. By applying the
                 knowledge I gained from constantly trying to find patterns in
                 data, I was able to make better decisions in life. Information
                 is everywhere, training to interpret patterns and biases
-                enables one to become a better person."
-            """, className="about-text"),
+                enables one to become a better person.
+            """], className="about-text")]), className="glass about-card"),
             html.Br(),
-            html.H5("""
-                "I believe the study and analysis of data is a fundamental
+            dbc.Card(dbc.CardBody([html.H5(["""
+                I believe the study and analysis of data is a fundamental
                 pillar for the development of a better world. Being able to
                 transform data into meaningful and helpful insights is what I
-                strive for as a software developer."
-            """, className="about-text")
+                strive for as a software developer.
+            """], className="about-text")]), className="glass about-card"),
         ], class_name="about-second-row")
     ])
     return component
@@ -173,7 +176,7 @@ def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
                 )], class_name="certificate-modal-body"),
             ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
-        ], class_name="certificate-card base-card")
+        ], class_name="glass certificate-card base-card")
         cards.append(card)
 
     tab = dbc.Tab(dbc.Row(
@@ -241,7 +244,7 @@ def projects() -> dbc.Row:
                 repo_name,
                 target=f"project-card-title-{repo_name}"
             ),
-        ], class_name="project-card shiny-background base-card")
+        ], class_name="project-card glass base-card")
         if url in ORDER:
             ordered_components[ORDER.index(url)] = card
         else:
@@ -269,7 +272,7 @@ def curriculum_vitae() -> dbc.Row:
             href="assets/cv/Pedro Kobori CV.pdf",
             download="assets/cv/Pedro Kobori CV.pdf",
             external_link=True,
-            color="info",
+            color="secondary",
             size="lg",
             class_name="curriculum-button"
         ), class_name="curriculum-row"),
