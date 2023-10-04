@@ -173,7 +173,7 @@ def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
                 dbc.ModalBody([html.Img(
                     src=join(ASSETS_CERTIFICATES, file),
                     className="modal-image"
-                )], class_name="certificate-modal-body"),
+                )]),
             ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
         ], class_name="glass certificate-card base-card")
@@ -195,6 +195,9 @@ def projects() -> dbc.Row:
     ordered_components = [None] * len(ORDER)
     head_components = []
     repos_directory = join(REPO_DIR, "repos.json")
+    modal_ids = []
+    image_ids = []
+    index = 0
     if not exists(repos_directory):
         get_repos()
 
@@ -210,6 +213,11 @@ def projects() -> dbc.Row:
             for lang, count in languages.items()
         ]
         repo_name = url.split('/')[-1]
+        modal_id = f"card-modal-{str(index).zfill(3)}"
+        image_id = f"card-image-{str(index).zfill(3)}"
+        index += 1
+        modal_ids.append(modal_id)
+        image_ids.append(image_id)
 
         image_path = join(REPO_DIR, f"{repo_name}.png")
         if exists(image_path):
@@ -238,7 +246,13 @@ def projects() -> dbc.Row:
         card = dbc.Card([
             html.Div(dbc.CardImg(
                 src=image_path, top=True, class_name="project-card-image"
-            )),
+            ), id=image_id),
+            dbc.Modal([
+                dbc.ModalBody([html.Img(
+                    src=join(image_path),
+                    className="modal-image"
+                )]),
+            ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="project-card-body"),
             dbc.Tooltip(
                 repo_name,
@@ -254,6 +268,17 @@ def projects() -> dbc.Row:
     component = dbc.Row(
         list(filter(None, head_components)),
         justify="evenly", class_name="project-row")
+
+    # Create all callbacks with the used ids
+    clientside_callback(
+        ClientsideFunction(
+            namespace='clientside',
+            function_name='project_click'
+        ),
+        [Output(project_modal, 'is_open') for project_modal in modal_ids],
+        [Input(image_modal, 'n_clicks') for image_modal in image_ids],
+        prevent_initial_call=True
+    )
     return component
 
 
