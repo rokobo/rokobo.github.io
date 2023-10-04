@@ -192,17 +192,52 @@ def projects() -> dbc.Row:
     Returns:
         dbc.Row: Row with all project cards.
     """
-    ordered_components = [None] * len(ORDER)
-    head_components = []
     repos_directory = join(REPO_DIR, "repos.json")
-    modal_ids = []
-    image_ids = []
-    index = 0
+
     if not exists(repos_directory):
         get_repos()
 
     with open(repos_directory, "r", encoding="utf-8") as file:
         repos = json.load(file)
+
+    components, modal_ids, image_ids = make_project_cards(repos)
+
+    component = dbc.Row(
+        list(filter(None, components)),
+        justify="evenly", class_name="project-row")
+
+    # Create all callbacks with the used ids
+    clientside_callback(
+        ClientsideFunction(
+            namespace='clientside',
+            function_name='project_click'
+        ),
+        [Output(project_modal, 'is_open') for project_modal in modal_ids],
+        [Input(image_modal, 'n_clicks') for image_modal in image_ids],
+        prevent_initial_call=True
+    )
+    return component
+
+
+def make_project_cards(repos: list) -> tuple[
+        list[dbc.Card], list[str], list[str]]:
+    """
+    Generates project cards.
+
+    Args:
+        repos (list): Repo information.
+
+    Returns:
+        tuple[list[dbc.Card], list[str], list[str]]:
+            List of project cards.
+            Modal ids of the cards.
+            Image ids of the cards.
+    """
+    ordered_components = [None] * len(ORDER)
+    head_components = []
+    modal_ids = []
+    image_ids = []
+    index = 0
 
     for _, url, description, languages in repos:
         tags = [
@@ -225,24 +260,6 @@ def projects() -> dbc.Row:
         else:
             image_path = join("assets/", "github.png")
 
-        body = [
-            html.H5(
-                html.A(
-                    repo_name, href=url,
-                    target="_blank", style={"color": "white"}
-                ), className="project-card-title",
-                id=f"project-card-title-{repo_name}"
-            ),
-            dbc.Col(
-                html.P(f"{description}", className="card-text"),
-                class_name="project-description"
-            ),
-            dbc.Col(
-                tags, class_name="project-languages",
-                id=f"project-tags-column-{repo_name}"
-            )
-        ]
-
         card = dbc.Card([
             html.Div(dbc.CardImg(
                 src=image_path, top=True, class_name="project-card-image"
@@ -253,7 +270,23 @@ def projects() -> dbc.Row:
                     className="modal-image"
                 )]),
             ], id=modal_id, centered=True, size="xl"),
-            dbc.CardBody(body, class_name="project-card-body"),
+            dbc.CardBody([
+                html.H5(
+                    html.A(
+                        repo_name, href=url,
+                        target="_blank", style={"color": "white"}
+                    ), className="project-card-title",
+                    id=f"project-card-title-{repo_name}"
+                ),
+                dbc.Col(
+                    html.P(f"{description}", className="card-text"),
+                    class_name="project-description"
+                ),
+                dbc.Col(
+                    tags, class_name="project-languages",
+                    id=f"project-tags-column-{repo_name}"
+                )
+            ], class_name="project-card-body"),
             dbc.Tooltip(
                 repo_name,
                 target=f"project-card-title-{repo_name}"
@@ -263,23 +296,8 @@ def projects() -> dbc.Row:
             ordered_components[ORDER.index(url)] = card
         else:
             head_components.append(card)
-
     head_components.extend(ordered_components)
-    component = dbc.Row(
-        list(filter(None, head_components)),
-        justify="evenly", class_name="project-row")
-
-    # Create all callbacks with the used ids
-    clientside_callback(
-        ClientsideFunction(
-            namespace='clientside',
-            function_name='project_click'
-        ),
-        [Output(project_modal, 'is_open') for project_modal in modal_ids],
-        [Input(image_modal, 'n_clicks') for image_modal in image_ids],
-        prevent_initial_call=True
-    )
-    return component
+    return head_components, modal_ids, image_ids
 
 
 def curriculum_vitae() -> dbc.Row:
