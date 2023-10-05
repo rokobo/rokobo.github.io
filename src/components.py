@@ -114,11 +114,12 @@ def certificates() -> dbc.Row:
     Returns:
         dbc.Row: Row with all cards and modals.
     """
+    index = 0
     tabs = []
     all_modal_ids = []
     all_image_ids = []
     for category in CATEGORIES:
-        tab, modal_ids, image_ids = make_category_cards(category)
+        tab, modal_ids, image_ids, index = make_category_cards(category, index)
         tabs.append(tab)
         all_modal_ids.extend(modal_ids)
         all_image_ids.extend(image_ids)
@@ -137,12 +138,14 @@ def certificates() -> dbc.Row:
     return component
 
 
-def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
+def make_category_cards(category: str, index: int) -> tuple[
+        dbc.Tab, list[str], list[str]]:
     """
     Generates cards with the given category.
 
     Args:
         category (str): Category of the certificate.
+        index (int): Index for callback.
 
     Returns:
         tuple[dbc.Tab, list[str], list[str]]:
@@ -158,10 +161,11 @@ def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
             if category != TAGS[file[:3]][0]:
                 continue
 
-        modal_id = f"card-modal-{file[:3]}-{category}"
-        image_id = f"card-image-{file[:3]}-{category}"
+        modal_id = f"card-modal-{index}-{category}"
+        image_id = f"card-image-{index}-{category}"
         modal_ids.append(modal_id)
         image_ids.append(image_id)
+        index += 1
 
         body = [dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][1:]]
         body.append(html.P(file[4:-4], className="card-text"))
@@ -182,7 +186,7 @@ def make_category_cards(category: str) -> tuple[dbc.Tab, list[str], list[str]]:
     tab = dbc.Tab(dbc.Row(
         cards, justify="evenly", style={"marginTop": "15px"}
     ), label=f"{category} ({len(cards)})", tab_id=category)
-    return tab, modal_ids, image_ids
+    return tab, modal_ids, image_ids, index
 
 
 def projects() -> dbc.Row:
