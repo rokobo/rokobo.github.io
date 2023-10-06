@@ -20,7 +20,7 @@ CERTIFICATES = [f for f in listdir(ASSET_DIR) if f.endswith((".png", ".jpg"))]
 CERTIFICATES.sort()
 with open(join(ASSET_DIR, "tags.yml"), "r", encoding="utf-8") as config:
     TAGS = yaml.safe_load(config)
-CATEGORIES = list({tag[0] for tag in TAGS.values()})
+CATEGORIES = list({tag for tags in TAGS.values() for tag in tags[0]})
 CATEGORIES.insert(0, "All")
 with open(join(REPO_DIR, "order.json"), "r", encoding="utf-8") as config:
     ORDER = json.load(config)
@@ -158,7 +158,7 @@ def make_category_cards(category: str, index: int) -> tuple[
     image_ids = []
     for file in CERTIFICATES[::-1]:
         if category != "All":
-            if category != TAGS[file[:3]][0]:
+            if category not in TAGS[file[:3]][0]:
                 continue
 
         modal_id = f"card-modal-{index}-{category}"
