@@ -167,17 +167,22 @@ def make_category_cards(category: str, index: int) -> tuple[
         image_ids.append(image_id)
         index += 1
 
-        body = [dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][1:]]
+        body = [dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][2:]]
         body.append(html.P(file[4:-4], className="card-text"))
         card = dbc.Card([
             html.Div(dbc.CardImg(
                 src=join(ASSETS_CERTIFICATES, file), top=True
             ), id=image_id),
             dbc.Modal([
-                dbc.ModalBody([html.Img(
-                    src=join(ASSETS_CERTIFICATES, file),
-                    className="modal-image"
-                )]),
+                dbc.ModalBody([
+                    html.Img(
+                        src=join(ASSETS_CERTIFICATES, file),
+                        className="modal-image"
+                    ),
+                    dbc.Card(dbc.CardBody([  # Learned topics
+                        dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][1]
+                    ]))
+                ]),
             ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
         ], class_name="glass certificate-card base-card")

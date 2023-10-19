@@ -136,8 +136,8 @@ body::-webkit-scrollbar {
 .base-card {
     width: 30vh;
     margin-bottom: 2vh;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin-right: 1vh;
+    margin-left: 1vh;
 }
 
 /* Specific CSS */
@@ -192,7 +192,7 @@ body::-webkit-scrollbar {
 }
 
 .project-card {
-    height: 48vh;
+    height: 41vh;
     color: white;
 }
 
@@ -213,14 +213,14 @@ body::-webkit-scrollbar {
 }
 
 .project-card-image {
-    height: 20vh;
-    object-fit: contain;
+    height: 14.7vh;  /* Aspect ratio of 1200x630 */
+    object-fit: cover;
     align-self: center;
     object-position: top;
 }
 
 .project-description {
-    height: 12vh;
+    height: 13.2vh;
     overflow-y: scroll;
     overflow-x: hidden;
     margin-bottom: 1vh;
@@ -238,7 +238,7 @@ body::-webkit-scrollbar {
 }
 
 .project-languages {
-    height: 8vh;
+    height: 6vh;
     overflow-y: scroll;
     overflow-x: hidden;
     margin-bottom: 1vh;
@@ -271,8 +271,14 @@ body::-webkit-scrollbar {
 
 /* Mobile CSS */
 @media only screen and (max-width: 768px) {
-    .base-card {
-        width: 80vw;
+    .project-card {
+        height: 50vh;
+    }
+    .project-description {
+        height: 18vh;
+    }
+    .project-languages {
+        height: 8vh;
     }
     .about-first-row {
         height: auto;

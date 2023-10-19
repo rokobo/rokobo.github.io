@@ -1,32 +1,41 @@
 "032":
   - [Programming]
+  - [ Linear regression, Logistic regression, Gradient descent, Regularization, Learning rate, Vectorization, Feature scaling, Feature engineering, Overfitting, Underfitting, Normalization]
   - Python
   - Machine Learning
 "030":
   - [Programming]
+  - [Heaps, Balanced search trees, Hash tables, Bloom filters, Graph primitives, Graph applications, Deduplication, Shortest path, Graph search]
   - Python
 "029":
   - [Programming]
+  - [Master method, Gliding principle, Big-O notation, Algorithm analysis, Randomized algorihtms, Sucess probability, Comparison-based algorithms, Merge sort, Conting inversions, Quickselect, Quicksort, Minimum cut, Strassen's matrix multiplication, Random contraction algorithm]
   - Python
 "028":
   - [Programming]
+  - [Privilege, Protecion domain, Robust and secure programming, Security policies and producedures, Secure programming design, Cohesing, Interfaces, Tokens, Preconditions and postconditions, Fragile code analysis, Error handling, Dereferencing, Double free, Buffer overflow]
   - Cybersec
 "027":
   - [Programming]
+  - [Threats, Vulnerabilities, Personal security, AAA model, CIA model, Networking, MAC and IP addresses, Subnet mask, Local/Remote communication, Packet routing, Address binding, Ports, TCP, UDP, Switches, Autonomous systems, Dynamic routing, Static addressing, DNS, Firewalls, Deception software, Social engineering, Phishing, Spearphising, Whaling, Pharming, Ransomware, Digital forensics]
   - Cybersec
 "026":
   - [Programming]
+  - [Indexes, Transactions, Data resilience, Triggers, Referencial integrity, Virtual views, Materializes views, Authorization]
   - SQL
 "025":
   - [Programming]
+  - [Design patterns, User interface, Anti-patterns, Design principles, Liskov substitution, Dependency inversion, Object composition, Interface seggregation, Law of demeter]
   - Java
   - UML
 "024":
   - [Programming]
+  - [Class Responsibility Collaborator, Design and architecture, Large scale design, small scale design, Design tradeoffs, Customer interaction, Data structures, Cohesion, Coupling, Inheritance, Design guidelines, Modularity and separation, UML classes]
   - Java
   - UML
 "023":
   - [Programming, Top]
+  - [Dynamic memory management, Branching, Stack processing, Pointers, Standard mapping, Virtual machine, Procedural programming, OOP, Tokenization, Grammars, Parsing, Parse trees, XML, Compilation, Array manipulation, Recursive compilation engine, Symbol tables, Running-time analysis, Resource allocation, Heap management, Input handling, Vector graphics, Fonts, Textual outputs, Type conversions, String processing, Booting, Operating system]
   - Python
   - Assembly
   - Hack
@@ -35,6 +44,7 @@
   - VM
 "022":
   - [Programming]
+  - [XML data, Well-formed XML, DTDs, IDs, IDREFs, schema, Json querying, Data validity, Parsers, XML query]
   - JSON
   - XML
   - DTD
@@ -44,13 +54,16 @@
   - XQuery
 "021":
   - [Programming]
+  - [Relational model, Relational database, Relational database management system, Subqueries, Aggregate functions, Modification statements, Table variables, Join operators]
   - SQL
 "020":
   - [Programming]
+  - [Algebraic query language, Dependency theory, Normal forms, Relational database, Schemas, UML, Diagrams]
   - UML
   - RA
 "019":
   - [Programming]
+  - [Boolean functions, Logic gates, Hardware description language, ALU, CPU, RAM, Registers, Machine language, Assemblers, Hardware implementation]
   - Python
   - HDL
   - Hack
@@ -58,55 +71,73 @@
   - Binary
 "018":
   - [Mathematics, Top]
+  - []
   - Calculus
 "017":
   - [Programming]
+  - [Dynamically-typed OOP, Dynamic classes, Duck typing, Blocks, Hashes, Ranges, Functional decomposition, Multiple inheritance, Mixins, Interface, Abstract methods, Subtyping, Overriding, Bounded polymorphism, Generics, Dynamic dispatch, Douple dispatch, Multiple dispatch]
   - Ruby
 "016":
   - [Technology]
+  - [Data entry, formulas, functions, Filter, sorting, optimization, preview, printing, basic charts, data formats]
   - Excel
 "015":
   - [Mathematics]
+  - [Arc length, Parameterized curves, Polar coordinates, Taylor polynomials, Convergence of infinite series]
   - Calculus
 "014":
   - [Programming]
+  - [Thunks, Streams, Memoization, Macros, Tokenization, Parenthesization, Scope, Datatype-programming, Type-system, Static checking, Soundness, Correctness, Weak and strong typing, Static and dynamic typing]
   - Racket
 "013":
   - [Programming]
+  - [Shadowing, Mutation, Compound types, Case expressions, Polymorphic Datatypes, Type inference, Tail recursion, Lexical scope, Callbacks, Mutable references, First-class functions, Polymorphic high-order functions, Anonymous functions, Signatures, Mutual recursion, Closures, Currying]
   - SML
 "012":
   - [Mathematics]
+  - [Differencial equations, Integrals, Applied integration]
   - Calculus
 "011":
   - [Programming]
+  - [Abstraction, Function design, Problem space, Data structure]
   - Racket
 "010":
   - [Mathematics]
+  - [Limits, Derivatives, Approximation functions, Minimization and maximization functions, Related rates]
   - Calculus
 "009":
   - [Programming]
+  - [Data representation, Data structures, Testing, Single Responsibility Principle, FP patterns]
   - Racket
 "008":
   - [Programming, Top]
+  - []
   - Python
 "007":
   - [Programming]
+  - []
   - Python
 "006":
   - [Programming]
+  - [Sorting, Searching, Master theorem, Dynamic programming, Clustering algorithms, Closest pair algorithm]
   - Python
 "005":
   - [Programming]
+  - [Class structure, Graphs, Brute-force algorithms, Plotting, Graph analysis, Asymptotic analysis, Big-O notation, Pseudocode, BFS, Graph resilience]
   - Python
 "004":
   - [Programming]
+  - [Searching, Data structures, Recursion, Trees, Assertions, Invariants]
   - Python
 "003":
   - [Programming]
+  - [Coding standards, Testing, Plotting, Grids, Probability, Objects, References, Generators, Debugging, High-order functions]
   - Python
 "002":
   - [Programming]
+  - [List methods, Dictionaries, Classes, OOP, Sets, Animations, Sprites, Game physics]
   - Python
 "001":
   - [Programming]
+  - [Statements, Expressions, Variables, Functions, Conditionals, Canvas, IO inputs, Motion modelling, timers]
   - Python
