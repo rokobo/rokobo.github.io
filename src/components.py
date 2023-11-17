@@ -339,7 +339,7 @@ def curriculum_vitae() -> dbc.Row:
         ], style={
             'background-color': 'rgba(0,0,0,0)', 'margin-bottom': '100px'})
         tab = dbc.Tab(dbc.Row(
-            card, justify="evenly", style={"marginTop": "15px"}
+            card, justify="evenly", style={"marginTop": "10px"}
         ), label=f"Curriculum ({lang})", tab_id=lang)
         tabs.append(tab)
 
