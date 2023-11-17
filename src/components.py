@@ -10,8 +10,6 @@ from pdf2image import convert_from_path
 from helper_functions import short_display_num, get_repos
 
 HOME = dirname(dirname(abspath(__file__)))
-CV_PDF = join(HOME, "assets/cv/Pedro Kobori CV.pdf")
-CV_PNG = join(HOME, "assets/cv/Pedro Kobori CV.png")
 ASSETS_CERTIFICATES = "assets/certificates"
 ASSET_DIR = join(HOME, ASSETS_CERTIFICATES)
 ASSETS_REPOS = "assets/repos"
@@ -316,24 +314,37 @@ def curriculum_vitae() -> dbc.Row:
     Returns:
         dbc.Row: Row for cv page.
     """
-    convert_from_path(CV_PDF)[0].save(CV_PNG, 'PNG')
+    languages = ["en", "pt"]
+    tabs = []
 
-    components = [
-        dbc.Row(dbc.Button(
-            "Download CV",
-            href="assets/cv/Pedro Kobori CV.pdf",
-            download="assets/cv/Pedro Kobori CV.pdf",
-            external_link=True,
-            color="secondary",
-            size="lg",
-            class_name="curriculum-button"
-        ), class_name="curriculum-row"),
-        dbc.Row(html.Img(
-            src="assets/cv/Pedro Kobori CV.png",
-            className="curriculum-image modal-content"
-        ), class_name="curriculum-row")
-    ]
+    for lang in languages:
+        cv_pdf = join(HOME, f"assets/cv/Pedro Kobori CV-{lang}.pdf")
+        cv_png = f"assets/cv/Pedro Kobori CV-{lang}.png"
+        convert_from_path(cv_pdf)[0].save(cv_png, 'PNG')
+
+        card = dbc.Card([
+            dbc.Row(dbc.Button(
+                "Download CV",
+                href=cv_pdf,
+                download=cv_pdf,
+                external_link=True,
+                color="secondary",
+                size="lg",
+                class_name="curriculum-button"
+            ), class_name="curriculum-row"),
+            dbc.Row(html.Img(
+                src=cv_png,
+                className="curriculum-image modal-content"
+            ), class_name="curriculum-row")
+        ], style={
+            'background-color': 'rgba(0,0,0,0)', 'margin-bottom': '100px'})
+        tab = dbc.Tab(dbc.Row(
+            card, justify="evenly", style={"marginTop": "15px"}
+        ), label=f"Curriculum ({lang})", tab_id=lang)
+        tabs.append(tab)
 
     component = dbc.Row(
-        components, class_name="curriculum-row")
+        dbc.Row(dbc.Tabs(tabs, active_tab="en")),
+        class_name="curriculum-row"
+    )
     return component
