@@ -13,3 +13,4 @@ assets/repos/*
 assets/cv/*
 !assets/cv/*.pdf
 !assets/cv/*.tex
+rokobo.github.io.code-workspace
