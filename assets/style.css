@@ -1,33 +1,27 @@
 /* Universal CSS */
 body {
     color: rgb(203, 203, 203);
-    z-index: 1;
+    z-index: -2;
+    min-height: 100vh;
     overflow-x: clip !important;
-	background: linear-gradient(
-        -45deg,
-        rgb(30, 30, 30) 0%,
-        rgb(30, 30, 30) 45%,
-        rgb(45, 45, 45) 50%,
-        rgb(30, 30, 30) 55%,
-        rgb(30, 30, 30) 100%
-    );
-	background-size: 500% 400%;
-	animation: background-gradient 2.5s ease infinite;
+    background: radial-gradient(ellipse at bottom, #323757 0%, #090A0F 100%);
 }
 
-@keyframes background-gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	100% {
-		background-position: 100% 50%;
-	}
+body, html {
+    margin: 0;
+    padding: 0;
 }
 
+canvas#stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
 
 h1, h2, h3, h4, h5, h6 {
     text-align: center;
-    color: rgb(255, 255, 255)
 }
 
 h4 {
@@ -36,28 +30,6 @@ h4 {
 
 body::-webkit-scrollbar {
     width: 0em;
-}
-
-.nav, .nav-tabs {
-    background-color: transparent;
-    justify-content: space-evenly;
-    margin-bottom: 1vh;
-}
-
-.nav-item {
-    margin-right: 7px;
-    margin-left: 7px;
-    display: flex;
-    text-align: center;
-    text-justify: center;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    border: 0;
-}
-
-.nav-link {
-    color: rgb(255, 255, 255);
 }
 
 @property --rotate {
@@ -91,7 +63,6 @@ body::-webkit-scrollbar {
 .tooltip-inner {
     white-space: pre-line;
 }
-
 
 /* Reusable CSS */
 .glass {
@@ -135,9 +106,9 @@ body::-webkit-scrollbar {
 
 .base-card {
     width: 30vh;
-    margin-bottom: 2vh;
-    margin-right: 1vh;
-    margin-left: 1vh;
+    /* margin-bottom: 2vh; */
+    /* margin-right: 1vh; */
+    /* margin-left: 1vh; */
 }
 
 /* Specific CSS */
@@ -149,6 +120,7 @@ body::-webkit-scrollbar {
 
 .certificate-card {
     padding: 0;
+    /* min-width: 20vw; */
 }
 
 .certificate-card img {
@@ -166,6 +138,13 @@ body::-webkit-scrollbar {
 .certificate-card-body {
     margin: 0px;
     padding: 5px;
+    height: 15vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.certificate-card-body::-webkit-scrollbar {
+    width: 5px;
 }
 
 .about-text {
@@ -227,7 +206,7 @@ body::-webkit-scrollbar {
 }
 
 .project-description::-webkit-scrollbar {
-    width: 20px;
+    width: 5px;
 }
 
 .project-card-title {
@@ -282,14 +261,6 @@ body::-webkit-scrollbar {
     }
     .about-first-row {
         height: auto;
-    }
-    @keyframes background-gradient {
-        0% {
-            background-position: 50% 0%;
-        }
-        100% {
-            background-position: 50% 100%;
-        }
     }
 }
 

@@ -5,6 +5,7 @@ from os.path import join, abspath, dirname, exists
 import json
 import yaml
 from dash import html, Input, Output, clientside_callback, ClientsideFunction
+import dash_mantine_components as dmc
 import dash_bootstrap_components as dbc
 from pdf2image import convert_from_path
 from helper_functions import short_display_num, get_repos
@@ -116,12 +117,19 @@ def certificates() -> dbc.Row:
     tabs = []
     all_modal_ids = []
     all_image_ids = []
+    tablist = []
+
     for category in CATEGORIES:
-        tab, modal_ids, image_ids, index = make_category_cards(category, index)
+        tab, modal_ids, image_ids, label = make_category_cards(category, index)
         tabs.append(tab)
+        tablist.append(dmc.Tab(label, value=category))
         all_modal_ids.extend(modal_ids)
         all_image_ids.extend(image_ids)
-    component = dbc.Row(dbc.Tabs(tabs, active_tab="All"))
+
+    component = dbc.Row(dmc.Tabs(
+        [dmc.TabsList(tablist, grow=True)] + tabs,
+        value="All", color="gray", variant="pills"
+    ))
 
     # Create all callbacks with the used ids
     clientside_callback(
@@ -184,12 +192,13 @@ def make_category_cards(category: str, index: int) -> tuple[
             ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
         ], class_name="glass certificate-card base-card")
-        cards.append(card)
+        cards.append(dmc.Col(card, span="auto"))
 
-    tab = dbc.Tab(dbc.Row(
-        cards, justify="evenly", style={"marginTop": "15px"}
-    ), label=f"{category} ({len(cards)})", tab_id=category)
-    return tab, modal_ids, image_ids, index
+    tab = dmc.TabsPanel(
+        dmc.Grid(cards, gutter="xl"),
+        value=category
+    )
+    return tab, modal_ids, image_ids, f"{category} ({len(cards)})"
 
 
 def projects() -> dbc.Row:
@@ -208,10 +217,10 @@ def projects() -> dbc.Row:
         repos = json.load(file)
 
     components, modal_ids, image_ids = make_project_cards(repos)
-
-    component = dbc.Row(
+    component = dmc.Grid(
         list(filter(None, components)),
-        justify="evenly", class_name="project-row")
+        gutter="xl"
+    )
 
     # Create all callbacks with the used ids
     clientside_callback(
@@ -300,9 +309,10 @@ def make_project_cards(repos: list) -> tuple[
             ),
         ], class_name="project-card glass base-card")
         if url in ORDER:
-            ordered_components[ORDER.index(url)] = card
+            ordered_components[ORDER.index(url)] = dmc.Col(card, span="auto")
         else:
-            head_components.append(card)
+            head_components.append(dmc.Col(card, span="auto"))
+
     head_components.extend(ordered_components)
     return head_components, modal_ids, image_ids
 
@@ -316,6 +326,10 @@ def curriculum_vitae() -> dbc.Row:
     """
     languages = ["en", "pt"]
     tabs = []
+    tablist = [
+        dmc.Tab("Curriculum (en)", value="en"),
+        dmc.Tab("Curriculum (pt)", value="pt")
+    ]
 
     for lang in languages:
         cv_pdf = join(HOME, f"assets/cv/Pedro Kobori CV-{lang}.pdf")
@@ -337,14 +351,12 @@ def curriculum_vitae() -> dbc.Row:
                 className="curriculum-image modal-content"
             ), class_name="curriculum-row")
         ], style={
-            'background-color': 'rgba(0,0,0,0)', 'margin-bottom': '100px'})
-        tab = dbc.Tab(dbc.Row(
-            card, justify="evenly", style={"marginTop": "10px"}
-        ), label=f"Curriculum ({lang})", tab_id=lang)
-        tabs.append(tab)
+            'backgroundColor': 'rgba(0,0,0,0)', 'marginBottom': '100px'})
 
-    component = dbc.Row(
-        dbc.Row(dbc.Tabs(tabs, active_tab="en")),
-        class_name="curriculum-row"
-    )
+        tabs.append(dmc.TabsPanel(card, value=lang))
+
+    component = dbc.Row(dmc.Tabs(
+        [dmc.TabsList(tablist, grow=True)] + tabs,
+        value="en", color="gray", variant="pills"
+    ))
     return component
