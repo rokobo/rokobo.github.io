@@ -40,10 +40,3 @@ def test_pylint_certificates() -> None:
     file = os.path.join(pages_folder, "certificates.py")
     result = Run([file], exit=False).linter.stats
     assert result.global_note == 10, result.by_msg
-
-
-def test_pylint_navigation() -> None:
-    """Ensures navigation passes pylint specifications."""
-    file = os.path.join(pages_folder, "navigation.py")
-    result = Run([file], exit=False).linter.stats
-    assert result.global_note == 10, result.by_msg

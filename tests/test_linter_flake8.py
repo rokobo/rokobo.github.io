@@ -40,10 +40,3 @@ def test_flake8_certificates() -> None:
     file = os.path.join(pages_folder, "certificates.py")
     result = flake8.get_style_guide().check_files([file])
     assert result.total_errors == 0, result.get_statistics(('F', 'E', 'W'))
-
-
-def test_flake8_navigation() -> None:
-    """Ensures navigation passes flake8 specifications."""
-    file = os.path.join(pages_folder, "navigation.py")
-    result = flake8.get_style_guide().check_files([file])
-    assert result.total_errors == 0, result.get_statistics(('F', 'E', 'W'))
