@@ -9,6 +9,7 @@ on:
       - 'assets/**'
       - 'tests/**'
       - 'thumbnail.png'
+  workflow_dispatch:
 jobs:
   testing:
     runs-on: ubuntu-latest

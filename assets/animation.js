@@ -8,8 +8,9 @@ function animateStars() {
 
         if (canvas) {
             clearInterval(retryInterval)
-            const starSizes = [0.4, 0.8, 1.4];
+            const starSizes = [0.4, 0.8, 1.2];
             const starSpeeds = [0.6, 0.4, 0.2];
+            const starBlurs = [10, 15, 50];
 
             function setCanvasSize() {
                 canvas.width = window.innerWidth;
@@ -38,6 +39,8 @@ function animateStars() {
                 draw() {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = "rgba(255, 255, 255, 0.9)";
                     ctx.fillStyle = "rgb(255, 255, 255)";
                     ctx.fill();
                 }
