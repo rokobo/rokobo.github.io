@@ -10,7 +10,6 @@ function animateStars() {
             clearInterval(retryInterval)
             const starSizes = [0.4, 0.8, 1.2];
             const starSpeeds = [0.6, 0.4, 0.2];
-            const starBlurs = [10, 15, 50];
 
             function setCanvasSize() {
                 canvas.width = window.innerWidth;
