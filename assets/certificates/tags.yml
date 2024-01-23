@@ -1,6 +1,11 @@
+"033":
+  - [Programming]
+  - [Neural networks, TensorFlow, Scikit-Learn, Model debugging, Regularization, Bias, Variance, Classification, Softmax regression, Multi-label classification, Convolution, Skewed datasets, Decision trees, Tree ensembles, XGBoost]
+  - Python
+  - Machine Learning
 "032":
   - [Programming]
-  - [ Linear regression, Logistic regression, Gradient descent, Regularization, Learning rate, Vectorization, Feature scaling, Feature engineering, Overfitting, Underfitting, Normalization]
+  - [Linear regression, Logistic regression, Gradient descent, Regularization, Learning rate, Vectorization, Feature scaling, Feature engineering, Overfitting, Underfitting, Normalization]
   - Python
   - Machine Learning
 "030":
