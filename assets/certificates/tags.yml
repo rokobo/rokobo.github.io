@@ -1,13 +1,39 @@
-"033":
+"044":
+  - ["Programming"]
+  - [Big data theory, Big data components, Characteristics of data, Hadoop, YARN]
+  - Big Data
+"039":
+  - ["Programming"]
+  - [Natural language processing, Text retrieval, Ranking function, Vector space model, TF-IDF, Inverted index, TR system evaluation, Probabilistic retrieval model, Language models, Feedback, Web searching and crawling, Link analysis, HITS]
+  - Data mining
+"038":
+  - ["Programming"]
+  - [Data visualization, Design rules, Graphs and networks, Human benchmark, Multidimensional scaling, Packing, Visualization system design, Database visualization, Information visualization, Use of color, Data visualization framework]
+  - Data mining
+"037":
+  - ["Programming"]
+  - [Tensorflow, Supervised learning, Unsupervised learning, Reinforcement learning, Deep learning]
+  - Python
+  - Machine Learning
+"036":
+  - ["Programming"]
+  - [Clustering, Anomaly detection, TensorFlow, Collaborative filtering, Content-based filtering, Deep learning, PCA, Reinforcement learning, Deep Q-Network, Mini-batch, soft updates]
+  - Python
+  - Machine Learning
+"035":
   - [Programming]
   - [Neural networks, TensorFlow, Scikit-Learn, Model debugging, Regularization, Bias, Variance, Classification, Softmax regression, Multi-label classification, Convolution, Skewed datasets, Decision trees, Tree ensembles, XGBoost]
   - Python
   - Machine Learning
-"032":
+"034":
   - [Programming]
   - [Linear regression, Logistic regression, Gradient descent, Regularization, Learning rate, Vectorization, Feature scaling, Feature engineering, Overfitting, Underfitting, Normalization]
   - Python
   - Machine Learning
+"031":
+  - [Programming]
+  - [Greedy algorithms, Scheduling problem, Minimum spanning tree, Prim's algorithm, Kruskal's algorithm, Ackermann function, Huffman codes, Dynamic programming for graphs, Knapsack problem, Binary search trees]
+  - Python
 "030":
   - [Programming]
   - [Heaps, Balanced search trees, Hash tables, Bloom filters, Graph primitives, Graph applications, Deduplication, Shortest path, Graph search]

@@ -1,12 +1,17 @@
 """Functions for helping other scripts."""
 # pylint: disable=broad-exception-caught
+from os import listdir
 from os.path import join, abspath, dirname
 import time
 import json
 import requests
 from decouple import config
+from pdf2image import convert_from_path
 
-REPO_DIR = join(dirname(dirname(abspath(__file__))), "assets/repos")
+HOME = dirname(dirname(abspath(__file__)))
+REPO_DIR = join(HOME, "assets/repos")
+STOCK_DIR = join(HOME, "assets/certificates_stock")
+CERTIFICATES_DIR = join(HOME, "assets/certificates")
 
 
 def get_repos():
@@ -112,3 +117,24 @@ def short_display_num(num: int) -> str:
         else:
             break
     return string + next(unit)
+
+
+def convert_certificates() -> None:
+    """Converts certificates from .pdf to .png"""
+    certificate_pdf = [
+        f for f in listdir(STOCK_DIR) if f.endswith((".pdf"))]
+    certificate_pdf.sort()
+    certificate_png = [
+        f for f in listdir(CERTIFICATES_DIR) if f.endswith(".png")]
+    certificate_png.sort()
+
+    pdfs = set([f[:-4] for f in certificate_pdf])
+    pngs = set([f[:-4] for f in certificate_png])
+
+    if pdfs == pngs:
+        return
+
+    for file in certificate_pdf:
+        cv_pdf = join(STOCK_DIR, file)
+        cv_png = f"assets/certificates/{file.replace('pdf', 'png')}"
+        convert_from_path(cv_pdf)[0].save(cv_png, 'PNG')

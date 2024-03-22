@@ -3,6 +3,7 @@ from os.path import abspath, dirname, join, exists
 from dash import Dash, html
 import dash_mantine_components as dmc
 import dash_bootstrap_components as dbc
+from helper_functions import convert_certificates
 from pages import about, certificates, projects, cv
 
 
@@ -49,16 +50,17 @@ if __name__ == '__main__':
             dmc.TabsPanel(cv.layout, value="cv")
         ], id="tabs", value="about"),
     ], theme={"colorScheme": "dark"}))
-    app.server.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
     # Run debug mode if desktop.ini is in the main directory
-    if exists(join(dirname(dirname(abspath(__file__))), "desktop.ini")):
+    if exists(join(dirname(dirname(abspath(__file__))), ".env")):
+        assert app.server is not None
+        app.server.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+        convert_certificates()
         app.run_server(
             host="0.0.0.0",
             debug=True,
             port="8020",
-            dev_tools_hot_reload=True,
-            use_reloader=True
+            dev_tools_hot_reload=True
         )
     else:
         app.run_server(port="8080")

@@ -120,7 +120,8 @@ def certificates() -> dbc.Row:
     tablist = []
 
     for category in CATEGORIES:
-        tab, modal_ids, image_ids, label = make_category_cards(category, index)
+        tab, modal_ids, image_ids, label, index = make_category_cards(
+            category, index)
         tabs.append(tab)
         tablist.append(dmc.Tab(label, value=category))
         all_modal_ids.extend(modal_ids)
@@ -145,7 +146,7 @@ def certificates() -> dbc.Row:
 
 
 def make_category_cards(category: str, index: int) -> tuple[
-        dbc.Tab, list[str], list[str]]:
+        dmc.TabsPanel, list[str], list[str], str, int]:
     """
     Generates cards with the given category.
 
@@ -154,7 +155,7 @@ def make_category_cards(category: str, index: int) -> tuple[
         index (int): Index for callback.
 
     Returns:
-        tuple[dbc.Tab, list[str], list[str]]:
+        tuple[dmc.TabsPanel, list[str], list[str]]:
             Tab with all the cards of the given category.
             Modal ids of the cards.
             Image ids of the cards.
@@ -173,7 +174,8 @@ def make_category_cards(category: str, index: int) -> tuple[
         image_ids.append(image_id)
         index += 1
 
-        body = [dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][2:]]
+        body: list[dbc.Badge | html.P] = [
+            dbc.Badge(tag, pill=True) for tag in TAGS[file[:3]][2:]]
         body.append(html.P(file[4:-4], className="card-text"))
         card = dbc.Card([
             html.Div(dbc.CardImg(
@@ -198,15 +200,15 @@ def make_category_cards(category: str, index: int) -> tuple[
         dmc.Grid(cards, gutter="xl"),
         value=category
     )
-    return tab, modal_ids, image_ids, f"{category} ({len(cards)})"
+    return tab, modal_ids, image_ids, f"{category} ({len(cards)})", index
 
 
-def projects() -> dbc.Row:
+def projects() -> dmc.Grid:
     """
     Generates project cards for projects page.
 
     Returns:
-        dbc.Row: Row with all project cards.
+        dmc.Grid: Row with all project cards.
     """
     repos_directory = join(REPO_DIR, "repos.json")
 
