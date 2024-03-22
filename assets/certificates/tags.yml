@@ -1,22 +1,22 @@
 "044":
-  - ["Programming"]
+  - [Programming]
   - [Big data theory, Big data components, Characteristics of data, Hadoop, YARN]
   - Big Data
 "039":
-  - ["Programming"]
+  - [Programming]
   - [Natural language processing, Text retrieval, Ranking function, Vector space model, TF-IDF, Inverted index, TR system evaluation, Probabilistic retrieval model, Language models, Feedback, Web searching and crawling, Link analysis, HITS]
   - Data mining
 "038":
-  - ["Programming"]
+  - [Programming]
   - [Data visualization, Design rules, Graphs and networks, Human benchmark, Multidimensional scaling, Packing, Visualization system design, Database visualization, Information visualization, Use of color, Data visualization framework]
   - Data mining
 "037":
-  - ["Programming"]
+  - [Programming, Top]
   - [Tensorflow, Supervised learning, Unsupervised learning, Reinforcement learning, Deep learning]
   - Python
   - Machine Learning
 "036":
-  - ["Programming"]
+  - [Programming]
   - [Clustering, Anomaly detection, TensorFlow, Collaborative filtering, Content-based filtering, Deep learning, PCA, Reinforcement learning, Deep Q-Network, Mini-batch, soft updates]
   - Python
   - Machine Learning

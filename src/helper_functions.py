@@ -128,8 +128,8 @@ def convert_certificates() -> None:
         f for f in listdir(CERTIFICATES_DIR) if f.endswith(".png")]
     certificate_png.sort()
 
-    pdfs = set([f[:-4] for f in certificate_pdf])
-    pngs = set([f[:-4] for f in certificate_png])
+    pdfs = {f[:-4] for f in certificate_pdf}
+    pngs = {f[:-4] for f in certificate_png}
 
     if pdfs == pngs:
         return
