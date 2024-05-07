@@ -39,28 +39,25 @@ def about() -> dbc.Row:
         dbc.Row: Row with about sections.
     """
     component = dbc.Row([
+
         dbc.Row([
-            dbc.Col([
-                dbc.Card(dbc.CardBody([
-                    html.H1("Hello! 👋, My name is Pedro Kobori",
-                            style={"textAlign": "start"}),
-                    html.Br(),
-                    html.H4("""
-                        Self-taught developer with a passion for databases,
-                        productivity software, automations and data analysis.
-                    """, style={"textAlign": "start"})
-                ]), class_name="glass")
-            ], class_name="d-flex flex-column justify-content-center"),
-            dbc.Col([
-                dbc.Row(html.A([html.Img(
+            html.H1(["Hello! 👋, I am ", html.Span("Pedro Kobori", style={
+                "text-decoration": "underline", "color": "#0d9efd"})]),
+            html.H6("""
+                Self-taught developer with a passion for databases,
+                productivity software, automations,
+                data analysis, data engineering and machine learning.
+            """),
+            html.Br(),
+            dbc.Stack([
+                html.A([html.Img(
                     src="assets/github.png", className="home-icons"
-                )], href=URLS["github"], target="_blank")),
-                dbc.Row(html.A([html.Img(
+                )], href=URLS["github"], target="_blank"),
+                html.A([html.Img(
                     src="assets/linkedin.png", className="home-icons"
-                )], href=URLS["linkedin"], target="_blank")),
-            ], width="auto", class_name="d-flex flex-column \
-                justify-content-between align-items-center")
-        ], class_name="about-first-row"),
+                )], href=URLS["linkedin"], target="_blank")
+            ], direction="horizontal", className="justify-content-evenly"),
+        ], className="centered", style={"height": "90vh"}),
         dbc.Row([
             dbc.Card(dbc.CardBody([html.H5(["""
                 I am self-taught backend software developer. My education is
@@ -100,8 +97,9 @@ def about() -> dbc.Row:
                 pillar for the development of a better world. Being able to
                 transform data into meaningful and helpful insights is what I
                 strive for as a software developer.
-            """], className="about-text")]), className="glass about-card"),
-        ], class_name="about-second-row")
+            """], className="about-text")]), className="glass about-card")
+
+        ], className="centered")
     ])
     return component
 
@@ -123,7 +121,7 @@ def certificates() -> dbc.Row:
         tab, modal_ids, image_ids, label, index = make_category_cards(
             category, index)
         tabs.append(tab)
-        tablist.append(dmc.Tab(label, value=category))
+        tablist.append(dmc.TabsTab(label, value=category))
         all_modal_ids.extend(modal_ids)
         all_image_ids.extend(image_ids)
 
@@ -194,7 +192,7 @@ def make_category_cards(category: str, index: int) -> tuple[
             ], id=modal_id, centered=True, size="xl"),
             dbc.CardBody(body, class_name="certificate-card-body"),
         ], class_name="glass certificate-card base-card")
-        cards.append(dmc.Col(card, span="auto"))
+        cards.append(dmc.GridCol(card, span="auto"))
 
     tab = dmc.TabsPanel(
         dmc.Grid(cards, gutter="xl"),
@@ -251,7 +249,7 @@ def make_project_cards(repos: list) -> tuple[
             Modal ids of the cards.
             Image ids of the cards.
     """
-    ordered_components = [None] * len(ORDER)
+    ordered_comps = [None] * len(ORDER)
     head_components = []
     modal_ids = []
     image_ids = []
@@ -311,11 +309,11 @@ def make_project_cards(repos: list) -> tuple[
             ),
         ], class_name="project-card glass base-card")
         if url in ORDER:
-            ordered_components[ORDER.index(url)] = dmc.Col(card, span="auto")
+            ordered_comps[ORDER.index(url)] = dmc.GridCol(card, span="auto")
         else:
-            head_components.append(dmc.Col(card, span="auto"))
+            head_components.append(dmc.GridCol(card, span="auto"))
 
-    head_components.extend(ordered_components)
+    head_components.extend(ordered_comps)
     return head_components, modal_ids, image_ids
 
 
@@ -329,8 +327,8 @@ def curriculum_vitae() -> dbc.Row:
     languages = ["en", "pt"]
     tabs = []
     tablist = [
-        dmc.Tab("Curriculum (en)", value="en"),
-        dmc.Tab("Curriculum (pt)", value="pt")
+        dmc.TabsTab("Curriculum (en)", value="en"),
+        dmc.TabsTab("Curriculum (pt)", value="pt")
     ]
 
     for lang in languages:

@@ -1,6 +1,7 @@
 """Personal portfolio using Dash."""
+# pylint: disable=protected-access
 from os.path import abspath, dirname, join, exists
-from dash import Dash, html
+from dash import Dash, html, _dash_renderer
 import dash_mantine_components as dmc
 import dash_bootstrap_components as dbc
 from helper_functions import convert_certificates
@@ -10,6 +11,7 @@ from pages import about, certificates, projects, cv
 TITLE = "Pedro Kobori's personal portfolio"
 DESCRIPTION = "Projects, certificates, blog, CV and about section."
 IMAGE = "https://rokobo.github.io/thumbnail.png"
+_dash_renderer._set_react_version('18.2.0')  # For current dmc problems
 
 
 if __name__ == '__main__':
@@ -34,16 +36,11 @@ if __name__ == '__main__':
         html.Canvas(id="stars"),
         dmc.Tabs([
             dmc.TabsList([
-                dmc.Tab(
-                    dmc.Badge("Pedro Kobori", color="gray", size="lg"),
-                    value="logo", disabled=True,
-                    icon=dmc.Avatar(src="assets/logo.svg")
-                ),
-                dmc.Tab("About", value="about", ml="auto"),
-                dmc.Tab("Certificates", value="certificates"),
-                dmc.Tab("Projects", value="projects"),
-                dmc.Tab("CV", value="cv")
-            ]),
+                dmc.TabsTab("About", value="about",  ml="auto"),
+                dmc.TabsTab("Certificates", value="certificates"),
+                dmc.TabsTab("Projects", value="projects"),
+                dmc.TabsTab("CV", value="cv")
+            ], style={"height": "5vh"}),
             dmc.TabsPanel(about.layout, value="about"),
             dmc.TabsPanel(certificates.layout, value="certificates"),
             dmc.TabsPanel(projects.layout, value="projects"),

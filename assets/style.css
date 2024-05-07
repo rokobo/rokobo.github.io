@@ -1,4 +1,5 @@
 /* Universal CSS */
+
 body {
     color: rgb(203, 203, 203);
     z-index: -2;
@@ -30,6 +31,15 @@ h4 {
 
 body::-webkit-scrollbar {
     width: 0em;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    padding: 0 12vw;
 }
 
 @property --rotate {
@@ -68,13 +78,13 @@ body::-webkit-scrollbar {
 .glass {
     color: rgb(255, 255, 255);
     display: flex;
-    background-color: rgba(255, 255, 255, 0.05) !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
     border-color: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    border-radius: 10px;
     box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126),
         0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224),
         0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(1.5px);
 }
 
 .modal-image {
@@ -106,9 +116,6 @@ body::-webkit-scrollbar {
 
 .base-card {
     width: 30vh;
-    /* margin-bottom: 2vh; */
-    /* margin-right: 1vh; */
-    /* margin-left: 1vh; */
 }
 
 /* Specific CSS */
@@ -120,7 +127,6 @@ body::-webkit-scrollbar {
 
 .certificate-card {
     padding: 0;
-    /* min-width: 20vw; */
 }
 
 .certificate-card img {

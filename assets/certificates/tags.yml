@@ -1,3 +1,17 @@
+"049":
+  - [Programming]
+  - [Neo4j, Splunk, Spark, Knime]
+  - Big Data
+  - PySpark
+  - Neo4j
+  - Splunk
+  - Knime
+"048":
+  - [Programming]
+  - [Neo4j, Graph analytics, Cypher queries, Apache Spark GraphX]
+  - Big Data
+  - PySpark
+  - Neo4j
 "047":
   - [Programming]
   - [Spark, KNIME, Data exploration, Data preparation, Data description, Machine Learning algorithms]
@@ -5,10 +19,10 @@
   - PySpark
 "046":
   - [Programming]
-  - [MongoDB, Aerospike, MongoBD shell, Processing pipelines, Data workflow, Semi-join, Spark]
+  - [MongoDB, Aerospike, MongoBD, Processing pipelines, Data workflow, Semi-join, Spark]
   - Big Data
   - PySpark
-  - Mongosh
+  - MongoBD
 "045":
   - [Programming]
   - [Big Data management, Data model, Apache Lucene, Gephi, Data stream, Data lakes, DBMS and BDMS]
@@ -17,7 +31,7 @@
   - [Programming]
   - [Big data theory, Big data components, Characteristics of data, Hadoop, YARN]
   - Big Data
-  - Hadoop shell
+  - Hadoop
 "039":
   - [Programming]
   - [Natural language processing, Text retrieval, Ranking function, Vector space model, TF-IDF, Inverted index, TR system evaluation, Probabilistic retrieval model, Language models, Feedback, Web searching and crawling, Link analysis, HITS]
