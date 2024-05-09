@@ -17,3 +17,9 @@ rokobo.github.io.code-workspace
 .venv
 assets/certificates_stock
 assets/JetBrainsMono\[wght\].ttf
+*.aux
+*.dvi
+*.fls
+*.log
+*.out
+*.fdb_latexmk

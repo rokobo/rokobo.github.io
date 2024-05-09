@@ -42,7 +42,7 @@ def about() -> dbc.Row:
 
         dbc.Row([
             html.H1(["Hello! 👋, I am ", html.Span("Pedro Kobori", style={
-                "text-decoration": "underline", "color": "#0d9efd"})]),
+                "textDecoration": "underline", "color": "#0d9efd"})]),
             html.H6("""
                 Self-taught developer with a passion for databases,
                 productivity software, automations,
@@ -332,18 +332,16 @@ def curriculum_vitae() -> dbc.Row:
     ]
 
     for lang in languages:
-        cv_pdf = join(HOME, f"assets/cv/Pedro Kobori CV-{lang}.pdf")
+        cv_pdf = f"assets/cv/Pedro Kobori CV-{lang}.pdf"
         cv_png = f"assets/cv/Pedro Kobori CV-{lang}.png"
         convert_from_path(cv_pdf)[0].save(cv_png, 'PNG')
 
         card = dbc.Card([
             dbc.Row(dbc.Button(
                 "Download CV",
-                href=cv_pdf,
-                download=cv_pdf,
-                external_link=True,
                 color="secondary",
                 size="lg",
+                id=f"cv-download-{lang}",
                 class_name="curriculum-button"
             ), class_name="curriculum-row"),
             dbc.Row(html.Img(
@@ -359,4 +357,14 @@ def curriculum_vitae() -> dbc.Row:
         [dmc.TabsList(tablist, grow=True)] + tabs,
         value="en", color="gray", variant="pills"
     ))
+
+    clientside_callback(
+        ClientsideFunction(
+            namespace='clientside',
+            function_name='curriculum_click'
+        ),
+        [Output(f"cv-download-{lang}", 'children') for lang in languages],
+        [Input(f"cv-download-{lang}", "n_clicks") for lang in languages],
+        prevent_initial_call=True
+    )
     return component
