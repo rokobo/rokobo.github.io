@@ -8,29 +8,15 @@ body {
     background: radial-gradient(ellipse at bottom, #323757 0%, #090A0F 100%);
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-}
-
-canvas#stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-}
+body, html {margin: 0;padding: 0;}
+canvas#stars {position: absolute;top: 0;left: 0;width: 100%;z-index: -1;}
+h1, h2, h3, h4, h5, h6 {text-align: center;}
+body::-webkit-scrollbar {width: 0em;}
+.modal-body {padding: 8px;}
+.modal-content {background-color: rgba(0, 221, 255, 0.4);border: transparent;}
 
 h4 {
     color: rgb(135, 135, 135);
-}
-
-body::-webkit-scrollbar {
-    width: 0em;
 }
 
 .centered {
@@ -53,22 +39,6 @@ body::-webkit-scrollbar {
     100% {--rotate: 360deg}
 }
 
-.modal-content {
-    background-color: transparent;
-    background-image: linear-gradient(
-        var(--rotate),
-        rgba(93, 220, 255, 0.4),
-        rgba(60, 103, 227, 0.4),
-        rgba(78, 0, 194, 0.4)
-    );
-    background-position: center center;
-    animation: gradientSpin 4s linear infinite;
-    border: transparent;
-}
-
-.modal-body {
-    padding: 8px;
-}
 
 .tooltip-inner {
     white-space: pre-line;
@@ -116,41 +86,21 @@ body::-webkit-scrollbar {
 
 .base-card {
     width: 30vh;
+    margin-bottom: 2vh;
+    padding: 0;
+    color: white;
 }
 
-/* Specific CSS */
+.grid-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: flex-start
+}
+
+/* About */
 .home-icons {
     height: 50px;
-    width: auto;
-    margin-left: 50px;
-}
-
-.certificate-card {
-    padding: 0;
-}
-
-.certificate-card img {
-    transition: all 0.5s;
-    transform: scale(1);
-    opacity: 0.95;
-}
-
-.certificate-card:hover img {
-    transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    opacity: 1;
-}
-
-.certificate-card-body {
-    margin: 0px;
-    padding: 5px;
-    height: 15vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-.certificate-card-body::-webkit-scrollbar {
-    width: 5px;
 }
 
 .about-text {
@@ -171,30 +121,22 @@ body::-webkit-scrollbar {
     padding: 5vh;
 }
 
-.project-card-body {
-    margin: 0px;
-    padding: 0px;
-}
-
-.project-card {
-    height: 41vh;
-    color: white;
-}
-
-.project-card img {
+/* Certificates and Projects */
+.base-card img {
     transition: all 0.5s;
     transform: scale(1);
+    opacity: 0.95;
 }
 
-.project-card:hover img {
+.base-card:hover img {
     transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 1;
 }
 
-.project-row {
-    column-gap: 0px;
-    padding: 0px;
-    margin-right: 0.5vh;
-    margin-left: 0.5vh;
+.card-body {
+    margin: 0px;
+    padding: 5px;
 }
 
 .project-card-image {
@@ -204,35 +146,17 @@ body::-webkit-scrollbar {
     object-position: top;
 }
 
-.project-description {
-    height: 13.2vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.card-section {
     margin-bottom: 1vh;
 }
 
-.project-description::-webkit-scrollbar {
-    width: 5px;
-}
-
-.project-card-title {
-    height: 4vh;
+.card-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.project-languages {
-    height: 6vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin-bottom: 1vh;
-}
-
-.project-languages::-webkit-scrollbar {
-    width: 5px;
-}
-
+/* Curriculum */
 .curriculum-button {
     width: 50vw;
     margin: 3vw;
@@ -250,23 +174,17 @@ body::-webkit-scrollbar {
     padding: 8px;
 }
 
-.curriculum-row {
-    justify-content: center;
-}
+.curriculum-row {justify-content: center;}
 
 /* Mobile CSS */
 @media only screen and (max-width: 768px) {
-    .project-card {
-        height: 50vh;
-    }
-    .project-description {
-        height: 18vh;
-    }
-    .project-languages {
-        height: 8vh;
-    }
     .about-first-row {
         height: auto;
+    }
+    .base-card {
+        width: auto;
+        max-width: 75vw;
+        margin-bottom: 5vh;
     }
 }
 

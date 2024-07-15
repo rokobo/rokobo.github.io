@@ -49,14 +49,14 @@ def about() -> dbc.Row:
                 data analysis, data engineering and machine learning.
             """),
             html.Br(),
-            dbc.Stack([
+            html.Div([
                 html.A([html.Img(
                     src="assets/github.png", className="home-icons"
                 )], href=URLS["github"], target="_blank"),
                 html.A([html.Img(
                     src="assets/linkedin.png", className="home-icons"
                 )], href=URLS["linkedin"], target="_blank")
-            ], direction="horizontal", className="justify-content-evenly"),
+            ], className="grid-div"),
         ], className="centered", style={"height": "90vh"}),
         dbc.Row([
             dbc.Card(dbc.CardBody([html.H5(["""
@@ -178,7 +178,7 @@ def make_category_cards(category: str, index: int) -> tuple[
         card = dbc.Card([
             html.Div(dbc.CardImg(
                 src=join(ASSETS_CERTIFICATES, file), top=True
-            ), id=image_id),
+            ), id=image_id, className="card-section"),
             dbc.Modal([
                 dbc.ModalBody([
                     html.Img(
@@ -190,12 +190,12 @@ def make_category_cards(category: str, index: int) -> tuple[
                     ]))
                 ]),
             ], id=modal_id, centered=True, size="xl"),
-            dbc.CardBody(body, class_name="certificate-card-body"),
-        ], class_name="glass certificate-card base-card")
-        cards.append(dmc.GridCol(card, span="auto"))
+            dbc.CardBody(body, class_name="card-section card-body"),
+        ], class_name="glass base-card")
+        cards.append(card)
 
     tab = dmc.TabsPanel(
-        dmc.Grid(cards, gutter="xl"),
+        html.Div(cards, className="grid-div"),
         value=category
     )
     return tab, modal_ids, image_ids, f"{category} ({len(cards)})", index
@@ -217,10 +217,7 @@ def projects() -> dmc.Grid:
         repos = json.load(file)
 
     components, modal_ids, image_ids = make_project_cards(repos)
-    component = dmc.Grid(
-        list(filter(None, components)),
-        gutter="xl"
-    )
+    component = html.Div(list(filter(None, components)), className="grid-div")
 
     # Create all callbacks with the used ids
     clientside_callback(
@@ -291,27 +288,27 @@ def make_project_cards(repos: list) -> tuple[
                     html.A(
                         repo_name, href=url,
                         target="_blank", style={"color": "white"}
-                    ), className="project-card-title",
+                    ), className="card-title",
                     id=f"project-card-title-{repo_name}"
                 ),
                 dbc.Col(
                     html.P(f"{description}", className="card-text"),
-                    class_name="project-description"
+                    class_name="card-section"
                 ),
                 dbc.Col(
-                    tags, class_name="project-languages",
+                    tags, class_name="card-section",
                     id=f"project-tags-column-{repo_name}"
                 )
-            ], class_name="project-card-body"),
+            ], class_name="card-body"),
             dbc.Tooltip(
                 repo_name,
                 target=f"project-card-title-{repo_name}"
             ),
-        ], class_name="project-card glass base-card")
+        ], class_name="glass base-card")
         if url in ORDER:
-            ordered_comps[ORDER.index(url)] = dmc.GridCol(card, span="auto")
+            ordered_comps[ORDER.index(url)] = card
         else:
-            head_components.append(dmc.GridCol(card, span="auto"))
+            head_components.append(card)
 
     head_components.extend(ordered_comps)
     return head_components, modal_ids, image_ids
@@ -339,14 +336,14 @@ def curriculum_vitae() -> dbc.Row:
         card = dbc.Card([
             dbc.Row(dbc.Button(
                 "Download CV",
-                color="secondary",
+                color="primary",
                 size="lg",
                 id=f"cv-download-{lang}",
                 class_name="curriculum-button"
             ), class_name="curriculum-row"),
             dbc.Row(html.Img(
                 src=cv_png,
-                className="curriculum-image modal-content"
+                className="curriculum-image"
             ), class_name="curriculum-row")
         ], style={
             'backgroundColor': 'rgba(0,0,0,0)', 'marginBottom': '100px'})
